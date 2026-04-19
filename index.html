@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | CryptoDaily</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .top-bar { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 6px 0; text-align: center; font-size: 0.78em; color: #555; }
+        .top-bar span { margin: 0 20px; }
+        .live { color: #4caf50; }
+        header { background: #111; border-bottom: 3px solid #f7931a; padding: 18px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
+        .logo span { color: #fff; }
+        .header-price .btc-price { font-size: 1.4em; font-weight: 700; color: #f7931a; }
+        .header-price .btc-change { font-size: 0.85em; color: #4caf50; }
+        .header-price .btc-change.down { color: #f44336; }
+        nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
+        nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
+        nav a:hover { color: #f7931a; border-bottom-color: #f7931a; }
+        nav a.active { color: #f7931a; border-bottom-color: #f7931a; }
+        .ad-banner { background: #111; border: 1px dashed #222; border-radius: 6px; text-align: center; color: #333; font-size: 0.78em; margin: 16px 40px; height: 90px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section-heading { font-size: 1em; font-weight: 700; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1e1e1e; padding-bottom: 10px; margin-bottom: 20px; margin-top: 30px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 700; }
+        .badge-up { background: #0d2d0d; color: #4caf50; }
+        .badge-down { background: #2d0d0d; color: #f44336; }
+        .card { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 20px; margin-bottom: 20px; transition: border-color 0.2s; }
+        .card:hover { border-color: #333; }
+        footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 40px; margin-top: 60px; }
+    </style>
+</head>
+
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <span>📅 <span id="live-date"></span></span>
+    <span class="live">● LIVE</span>
+    <span id="live-price">Loading...</span>
+    <span>Updated: <span id="live-time"></span></span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo">₿<span>CryptoDaily</span></a>
+        <div class="header-price">
+            <div class="btc-price">$75,601.00</div>
+            <div class="btc-change down">▼ 2.04% (24h)</div>
+        </div>
+    </div>
+</header>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="active">Home</a>
+        <a href="news.html">Bitcoin News</a>
+        <a href="trends.html">Crypto Trends</a>
+        <a href="market.html">Market Data</a>
+        <a href="crypto-history.html">Crypto History</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<!-- Ad -->
+<div class="ad-banner">ADVERTISEMENT</div>
+
+<!-- Hero Stats -->
+<div style="background: #111; border-bottom: 1px solid #1e1e1e; padding: 30px 0;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+
+            <div class="card" style="border-left: 4px solid #f7931a; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Bitcoin Price</div>
+                <div style="font-size: 1.9em; font-weight: 800; color: #f7931a;">$75,601.00</div>
+                <div class="badge badge-down" style="margin-top: 8px;">▼ 2.04% (24h)</div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #9c27b0; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Total Market Cap</div>
+                <div style="font-size: 1.5em; font-weight: 800; color: #ce93d8;">$2.64T</div>
+                <div class="badge badge-down" style="margin-top: 8px;">-2.19% (24h)</div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #2196f3; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">BTC Dominance</div>
+                <div style="font-size: 1.9em; font-weight: 800; color: #90caf9;">57.51%</div>
+                <div style="font-size: 0.8em; color: #555; margin-top: 8px;">ETH: 10.74%</div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #ff9800; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Fear & Greed</div>
+                <div style="font-size: 1.9em; font-weight: 800; color: #ff9800;">27</div>
+                <div style="font-size: 0.85em; color: #ff9800; margin-top: 8px; font-weight: 600;">Fear</div>
+            </div>
+        </div>
+
+        <!-- Market Bar -->
+        <div style="background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 8px; padding: 14px 20px; display: flex; gap: 30px; flex-wrap: wrap; font-size: 0.83em;">
+            <div><span style="color: #555;">Active Coins:</span> <span style="color: #e0e0e0; font-weight: 600;">17576</span></div>
+            <div><span style="color: #555;">24h Volume:</span> <span style="color: #e0e0e0; font-weight: 600;">$104.53B</span></div>
+            <div><span style="color: #555;">BTC High (24h):</span> <span style="color: #4caf50; font-weight: 600;">$77,243.00</span></div>
+            <div><span style="color: #555;">BTC Low (24h):</span> <span style="color: #f44336; font-weight: 600;">$75,404.00</span></div>
+            <div><span style="color: #555;">BTC ATH:</span> <span style="color: #f7931a; font-weight: 600;">$126,080.00</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Daily Intro -->
+    <div style="background: #111; border: 1px solid #222; border-left: 4px solid #f7931a; border-radius: 8px; padding: 24px; margin: 24px 0;">
+        <div style="font-size: 0.75em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">📋 Today's Overview — April 19, 2026</div>
+        <p style="color: #ccc; font-size: 1.05em; line-height: 1.85;">Welcome to CryptoDaily — your trusted source for Bitcoin and cryptocurrency news, market data, and analysis. Today's market is showing strong activity across all major cryptocurrencies.</p>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+
+    <!-- Main Grid -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 10px;">
+
+        <!-- Left: News -->
+        <div>
+            <div class="section-heading">Today's Top Stories</div>
+            
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 1</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">Bitcoin Mining Difficulty Takes a Dip Before Anticipated Rise</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span style="margin-left: 16px;">📅 April 19, 2026</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">The intricacies of the Bitcoin network have once again come into focus, as the mining difficulty has experienced a decline. This shift was announced on June 14th by Bitcoin's official mining difficulty adjustment tool, following 15 consecutive increases since January. The decrease in mining difficulty signifies that it will now take less computational power to mine a new block of Bitcoins.</div>
+                
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">This development matters for Bitcoin due to its direct impact on the network's stability and decentralization. A lower mining difficulty can potentially encourage more miners to participate, thereby increasing competition and ensuring the system remains secure. However, it could also lead to an increased rate of block production and a potential imbalance in the network's hashrate distribution if not countered by adjustments in the near future.</div>
+                
+                
+                <div style="background: #0d1a0d; border-left: 3px solid #4caf50; border-radius: 4px; padding: 10px 14px; margin-top: 14px; color: #8bc34a; font-size: 0.87em; font-style: italic;">💡 The recent fall in Bitcoin mining difficulty is a temporary adjustment that sets the stage for an anticipated rise in the near future. This shift may encourage more miners to participate and potentially impact the cost of mining and transaction fees.</div>
+                
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    <a href="https://cointelegraph.com/news/bitcoin-mining-difficulty-falls-rise-next?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 2</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">Iran Views Bitcoin as a Strategic Asset, While USDt Remains Dominant in Oil Transactions: BPI Report</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span style="margin-left: 16px;">📅 April 19, 2026</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">Iran has expressed its strategic interest in Bitcoin (BTC), according to a report by Blockchain Intelligence Group (BPI). However, Tether (USDt) is still leading in oil transactions, the report reveals. This move by Iran could be seen as a step towards finding alternatives to the traditional financial system, particularly the US dollar-dominated global economy.</div>
+                
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">The announcement comes amidst increasing economic sanctions and financial restrictions imposed by the United States on Iran. The Islamic Republic has been seeking ways to bypass these sanctions, and Bitcoin, with its decentralized nature, could potentially offer a solution.</div>
+                
+                
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    <a href="https://cointelegraph.com/news/iran-btc-strategic-usdt-dominate-oil-tolls?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 3</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">Spot Bitcoin ETFs Witness Close to $1 Billion in Weekly Inflows Amid Improving Risk Sentiment</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span style="margin-left: 16px;">📅 April 19, 2026</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">The influx of nearly $1 billion into Spot Bitcoin Exchange-Traded Funds (ETFs) over the past week indicates a significant surge in investor interest and confidence in Bitcoin as a viable asset class. This increase in investment is particularly noteworthy, given that it occurs during a period when risk sentiment among investors appears to be improving.</div>
+                
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">For Bitcoin enthusiasts, this development underscores the growing recognition of cryptocurrencies as a legitimate investment option by mainstream financial institutions. As more traditional investors pour funds into Bitcoin ETFs, it could potentially lead to increased liquidity and stability in the market.</div>
+                
+                
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    <a href="https://cointelegraph.com/news/spot-bitcoin-etfs-1b-weekly-inflows-risk-sentiment?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 4</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">Crypto Market Liquidations Surge Past $820 Million as Bitcoin Hits $78K</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span style="margin-left: 16px;">📅 April 19, 2026</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">A significant wave of crypto market liquidations has been reported, with over $820 million worth of positions being closed in a single day. This massive liquidation surge followed a sharp decline in the price of Bitcoin, which dipped below the $78,000 mark.</div>
+                
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">The steep fall in Bitcoin's price is noteworthy because it represents one of the cryptocurrency's most substantial drops since its November high of around $69,000. This downturn could be attributed to profit-taking by investors and a broader market correction.</div>
+                
+                
+                <div style="background: #0d1a0d; border-left: 3px solid #4caf50; border-radius: 4px; padding: 10px 14px; margin-top: 14px; color: #8bc34a; font-size: 0.87em; font-style: italic;">💡 The recent surge in crypto market liquidations, as Bitcoin dipped below $78K, highlights the volatility of cryptocurrency investments, offering potential buying opportunities while emphasizing the need for caution.</div>
+                
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    <a href="https://cointelegraph.com/news/crypto-liquidations-hit-820m-as-bitcoin-price-taps-78k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 5</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">Bitcoin and Crypto Price Predictions for April 17th: An In-depth Analysis of BTC, ETH, XRP, BNB, SOL, DOGE, HYPE, ADA, BCH, LINK</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span style="margin-left: 16px;">📅 April 19, 2026</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">Bitcoin (BTC): The flagship cryptocurrency is showing signs of stabilization after a volatile week. According to Cointelegraph's market analysis, Bitcoin could be gearing up for a potential move towards the $60,000 mark, provided it manages to hold above the crucial support level at $54,000. For Bitcoin enthusiasts and investors, this potential growth represents an opportunity to reap profits or enter the market.</div>
+                
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">Ethereum (ETH): Ethereum's price action has been closely mirroring that of Bitcoin. While ETH is currently trading below its all-time high, analysts suggest it could test the $3,000 level in the coming days if BTC continues to rally. For average investors, Ethereum's performance can indicate broader market trends and offer insights into potential investment strategies.</div>
+                
+                
+                <div style="background: #0d1a0d; border-left: 3px solid #4caf50; border-radius: 4px; padding: 10px 14px; margin-top: 14px; color: #8bc34a; font-size: 0.87em; font-style: italic;">💡 This week's crypto price predictions suggest potential growth opportunities for Bitcoin, Ethereum, Binance Coin, Solana, Cardano, and Chainlink, while Ripple, Dogecoin, HypeToken, and Bitcoin Cash could also see movement based on various factors such as legal matters, meme status, and partnership announcements. Understanding these trends can help investors make informed decisions.</div>
+                
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    <a href="https://cointelegraph.com/news/price-predictions-4-17-btc-eth-xrp-bnb-sol-doge-hype-ada-bch-link?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 6</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">Bitcoin Quietly Soars to 10-Week High, Analyst Predicts $88K in Coming Weeks</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span style="margin-left: 16px;">📅 April 19, 2026</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">The price of Bitcoin has surged to its highest level in over ten weeks, reaching a new peak on Wednesday, according to data from CoinMarketCap. The digital currency traded at around $63,000, marking a significant increase from the recent lows seen in mid-March.</div>
+                
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">The rally comes amid renewed optimism in the cryptocurrency market, with some analysts predicting that Bitcoin could soon reach unprecedented heights. One such trader, known as "PlanB," tweeted that Bitcoin's price could potentially reach $88,000 within weeks, based on the stock-to-flow model, which measures the scarcity of the cryptocurrency.</div>
+                
+                
+                <div style="background: #0d1a0d; border-left: 3px solid #4caf50; border-radius: 4px; padding: 10px 14px; margin-top: 14px; color: #8bc34a; font-size: 0.87em; font-style: italic;">💡 Bitcoin's price has surged to its highest level in over ten weeks, with one analyst predicting that the digital currency could reach $88,000 within weeks based on the stock-to-flow model. This increase presents both opportunities and risks for regular people interested in investing in Bitcoin.</div>
+                
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    <a href="https://cointelegraph.com/news/bitcoin-price-quietly-sets-new-10-week-high-as-trader-sees-88k-in-weeks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="news.html" style="background: #f7931a; color: #000; text-decoration: none; padding: 12px 30px; border-radius: 6px; font-weight: 700; font-size: 0.9em;">View All News Articles →</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Fear & Greed -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">Fear & Greed Index</div>
+                <div style="text-align: center; margin: 10px 0 20px;">
+                    <div style="font-size: 3.5em; font-weight: 800; color: #ff9800;">27</div>
+                    <div style="font-size: 1.1em; color: #ff9800; font-weight: 600; margin-top: 4px;">Fear</div>
+                </div>
+                <div style="background: linear-gradient(to right, #f44336, #ff9800, #ffeb3b, #8bc34a, #4caf50); height: 8px; border-radius: 4px; position: relative; margin-bottom: 6px;">
+                    <div style="position: absolute; top: -4px; left: 27%; width: 16px; height: 16px; background: #fff; border-radius: 50%; transform: translateX(-50%); border: 2px solid #333;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.72em; color: #555; margin-top: 8px;">
+                    <span>Extreme Fear</span><span>Neutral</span><span>Extreme Greed</span>
+                </div>
+                <div style="margin-top: 16px;">
+                    <div style="font-size: 0.75em; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">7-Day History</div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 1</span>
+                        <span style="color: #f44336; font-weight: 600;">27 — Fear</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 2</span>
+                        <span style="color: #f44336; font-weight: 600;">26 — Fear</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 3</span>
+                        <span style="color: #f44336; font-weight: 600;">21 — Extreme Fear</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 4</span>
+                        <span style="color: #f44336; font-weight: 600;">23 — Extreme Fear</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 5</span>
+                        <span style="color: #f44336; font-weight: 600;">23 — Extreme Fear</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 6</span>
+                        <span style="color: #f44336; font-weight: 600;">21 — Extreme Fear</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day 7</span>
+                        <span style="color: #f44336; font-weight: 600;">12 — Extreme Fear</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Trending -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">🔥 Trending Now</div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/70544/large/coin.jpeg?1762452940" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">RaveDAO</div>
+                            <div style="font-size: 0.75em; color: #555;">RAVE</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #143</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/50333/large/IMG_0728.jpeg?1727384521" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">Asteroid Shiba</div>
+                            <div style="font-size: 0.75em; color: #555;">ASTEROID</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #206</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">Aave</div>
+                            <div style="font-size: 0.75em; color: #555;">AAVE</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #55</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/28206/large/ftxG9_TJ_400x400.jpeg?1696527208" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">LayerZero</div>
+                            <div style="font-size: 0.75em; color: #555;">ZRO</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #116</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">Pudgy Penguins</div>
+                            <div style="font-size: 0.75em; color: #555;">PENGU</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #108</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">Bitcoin</div>
+                            <div style="font-size: 0.75em; color: #555;">BTC</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #1</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/32440/large/pol.png?1759114181" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">POL (ex-MATIC)</div>
+                            <div style="font-size: 0.75em; color: #555;">POL</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #71</div>
+                </div>
+                
+                <a href="trends.html" style="display: block; text-align: center; margin-top: 14px; color: #f7931a; font-size: 0.83em; font-weight: 600; text-decoration: none;">View Full Trends →</a>
+            </div>
+
+            <div class="ad-banner" style="height: 250px; margin: 0 0 20px;">AD</div>
+
+            <!-- Whale Transactions -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">🐋 Whale Transactions</div>
+                
+                <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-weight: 600; font-size: 0.88em; color: #f7931a;">75.90 BTC moved</div>
+                    <div style="font-size: 0.78em; color: #555; margin-top: 4px;">2026-04-19 04:24 UTC</div>
+                    <a href="https://blockchain.info/tx/08c02c26fef1751805e91b2fdd8d27edfbdccfe853c92d8cbc6a4302159fd26e" target="_blank" style="font-size: 0.75em; color: #888; text-decoration: none;">View Transaction →</a>
+                </div>
+                
+                <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-weight: 600; font-size: 0.88em; color: #f7931a;">10.23 BTC moved</div>
+                    <div style="font-size: 0.78em; color: #555; margin-top: 4px;">2026-04-19 04:24 UTC</div>
+                    <a href="https://blockchain.info/tx/25effd340263419c9f586287347f999f6d18cb8b96faeb70c9621188ff30bc25" target="_blank" style="font-size: 0.75em; color: #888; text-decoration: none;">View Transaction →</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 10 Table -->
+    <div class="section-heading" style="margin-top: 40px;">Top 10 Cryptocurrencies</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.88em;">
+            <thead>
+                <tr style="background: #0d0d0d; border-bottom: 1px solid #1e1e1e;">
+                    <th style="padding: 14px 16px; text-align: left; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">#</th>
+                    <th style="padding: 14px 16px; text-align: left; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Name</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Price</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">1h %</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">24h %</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">7d %</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Market Cap</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">1</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">Bitcoin</div>
+                                <div style="font-size: 0.78em; color: #555;">BTC</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$75,752.00</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.3%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-1.65%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+5.71%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$1.52T</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$44.69B</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">2</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">Ethereum</div>
+                                <div style="font-size: 0.78em; color: #555;">ETH</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$2,344.22</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.13%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.66%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+5.33%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$282.93B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$12.84B</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">3</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">Tether</div>
+                                <div style="font-size: 0.78em; color: #555;">USDT</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.00</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$186.67B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$67.91B</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">4</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">XRP</div>
+                                <div style="font-size: 0.78em; color: #555;">XRP</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.43</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.32%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+7.31%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$88.19B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$2.30B</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">5</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">BNB</div>
+                                <div style="font-size: 0.78em; color: #555;">BNB</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$624.41</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.1%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.81%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.48%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$84.17B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$997.17M</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">6</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">USDC</div>
+                                <div style="font-size: 0.78em; color: #555;">USDC</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9998</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+-0.0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+-0.0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.02%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$78.47B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$8.64B</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">7</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">Solana</div>
+                                <div style="font-size: 0.78em; color: #555;">SOL</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$85.91</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.32%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.94%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.88%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$49.44B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$2.77B</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">8</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/1094/large/photo_2026-04-13_09-59-16.png?1776048311" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">TRON</div>
+                                <div style="font-size: 0.78em; color: #555;">TRX</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.3282</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.12%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.41%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+2.52%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$31.10B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$509.24M</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">9</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">Figure Heloc</div>
+                                <div style="font-size: 0.78em; color: #555;">FIGR_HELOC</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.03</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.31%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.48%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$17.34B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$9.19M</td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">10</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">Dogecoin</div>
+                                <div style="font-size: 0.78em; color: #555;">DOGE</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.0948</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.02%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.76%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.57%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$14.58B</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">$1.42B</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center; margin: 16px 0 40px;">
+        <a href="trends.html" style="color: #f7931a; text-decoration: none; font-size: 0.88em; font-weight: 600; border: 1px solid #f7931a; padding: 10px 24px; border-radius: 6px;">View All 50 Cryptocurrencies →</a>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+        <div>
+            <div style="font-size: 1.4em; font-weight: 800; color: #f7931a; margin-bottom: 12px;">₿CryptoDaily</div>
+            <p style="color: #444; font-size: 0.83em; line-height: 1.7;">Your trusted source for daily cryptocurrency news, market data, and analysis.</p>
+        </div>
+        <div>
+            <h4 style="color: #f7931a; font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px;">Pages</h4>
+            <a href="index.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Home</a>
+            <a href="news.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Bitcoin News</a>
+            <a href="trends.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Crypto Trends</a>
+            <a href="market.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Market Data</a>
+        </div>
+        <div>
+            <h4 style="color: #f7931a; font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px;">More</h4>
+            <a href="crypto-history.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Crypto History</a>
+            <a href="about.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">About Us</a>
+        </div>
+        <div>
+            <h4 style="color: #f7931a; font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px;">Data Sources</h4>
+            <a href="https://coingecko.com" target="_blank" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">CoinGecko</a>
+            <a href="https://alternative.me" target="_blank" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Alternative.me</a>
+            <a href="https://blockchain.info" target="_blank" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Blockchain.info</a>
+        </div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid #1a1a1a; padding-top: 20px; display: flex; justify-content: space-between; font-size: 0.78em; color: #333;">
+        <span>© April 19, 2026 CryptoDaily. All rights reserved.</span>
+        <span>Data provided for informational purposes only. Not financial advice.</span>
+    </div>
+</footer>
+<script>
+// Live date and time
+const now = new Date();
+document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
+
+// Live BTC price
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+  .then(r => r.json())
+  .then(data => {
+    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
+    const change = data.bitcoin.usd_24h_change.toFixed(2);
+    const arrow = change >= 0 ? '▲' : '▼';
+    const color = change >= 0 ? '#4caf50' : '#f44336';
+    document.getElementById('live-price').innerHTML =
+      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
+  })
+  .catch(() => {
+    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Daily News</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            border-bottom: 2px solid #f7931a;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: #f7931a;
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: #ffffff; }
+
+        .tagline {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        /* ── Price Ticker ── */
+        .price-ticker {
+            background: #111;
+            border-bottom: 1px solid #222;
+            padding: 14px 0;
+            text-align: center;
+        }
+
+        .price-ticker .price {
+            font-size: 2em;
+            font-weight: 700;
+            color: #f7931a;
+        }
+
+        .price-ticker .change {
+            font-size: 1em;
+            margin-left: 12px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .change.up { background: #0d2d0d; color: #4caf50; }
+        .change.down { background: #2d0d0d; color: #f44336; }
+
+        .price-ticker .updated {
+            color: #555;
+            font-size: 0.8em;
+            margin-top: 6px;
+        }
+
+        /* ── Main Layout ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        /* ── Daily Intro ── */
+        .daily-intro {
+            background: #111;
+            border: 1px solid #222;
+            border-left: 4px solid #f7931a;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .daily-intro h2 {
+            color: #f7931a;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .daily-intro p {
+            color: #ccc;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* ── Section Headings ── */
+        .section-heading {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #f7931a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* ── News Articles ── */
+        .article-card {
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .article-card:hover { border-color: #f7931a; }
+
+        .article-number {
+            font-size: 0.75em;
+            color: #f7931a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .article-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .article-meta {
+            font-size: 0.8em;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .article-meta span { margin-right: 16px; }
+
+        .article-body {
+            color: #bbb;
+            font-size: 0.97em;
+            line-height: 1.85;
+        }
+
+        .article-body p { margin-bottom: 14px; }
+
+        .key-takeaway {
+            background: #0d1a0d;
+            border-left: 3px solid #4caf50;
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            color: #8bc34a;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 14px;
+            color: #f7931a;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: 600;
+            border: 1px solid #f7931a;
+            padding: 5px 14px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .read-more:hover {
+            background: #f7931a;
+            color: #000;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar { }
+
+        .sidebar-card {
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        /* ── Market Mood ── */
+        .mood-text {
+            color: #bbb;
+            font-size: 0.92em;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+
+        .watch-tomorrow {
+            background: #0d1520;
+            border-left: 3px solid #2196f3;
+            border-radius: 4px;
+            padding: 12px 16px;
+            color: #90caf9;
+            font-size: 0.88em;
+            line-height: 1.7;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #050505;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            color: #444;
+            font-size: 0.85em;
+        }
+
+        footer a { color: #f7931a; text-decoration: none; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .price-ticker .price { font-size: 1.5em; }
+            .logo { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">₿<span>itcoin Daily</span></div>
+    <div class="tagline">Your daily source for Bitcoin news and market updates</div>
+</header>
+
+<!-- Price Ticker -->
+<div class="price-ticker">
+    <div class="price">{{ price }}</div>
+    <span class="change {{ change_class }}">{{ change }}</span>
+    <div class="updated">Updated: {{ date }}</div>
+</div>
+
+<div class="container">
+
+    <!-- Daily Intro -->
+    <div class="daily-intro">
+        <h2>📋 Today's Overview — {{ date }}</h2>
+        <p>{{ intro }}</p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+
+        <!-- Left: News Articles -->
+        <div class="articles-section">
+            <div class="section-heading">Today's Top Stories</div>
+
+            {% for item in articles %}
+            <div class="article-card">
+                <div class="article-number">Story {{ loop.index }}</div>
+                <div class="article-title">{{ item.title }}</div>
+                <div class="article-meta">
+                    <span>📰 {{ item.source }}</span>
+                    <span>📅 {{ date }}</span>
+                </div>
+                <div class="article-body">
+                    {% for paragraph in item.paragraphs %}
+                    <p>{{ paragraph }}</p>
+                    {% endfor %}
+                </div>
+                {% if item.takeaway %}
+                <div class="key-takeaway">💡 {{ item.takeaway }}</div>
+                {% endif %}
+                {% if item.link %}
+                <a href="{{ item.link }}" class="read-more" target="_blank">Read Original →</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- Right: Sidebar -->
+        <div class="sidebar">
+
+            <div class="sidebar-card">
+                <div class="section-heading">Market Mood</div>
+                <div class="mood-text">{{ market_mood }}</div>
+                <div class="watch-tomorrow">
+                    <strong>👀 Watch Tomorrow:</strong><br>{{ watch_tomorrow }}
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="section-heading">About</div>
+                <p style="color:#888; font-size:0.88em; line-height:1.7">
+                    Bitcoin Daily is an AI-powered news aggregator. Every day our agent
+                    automatically collects the latest Bitcoin headlines, writes detailed
+                    summaries, and publishes this page — fully autonomously.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© {{ date }} Bitcoin Daily · Powered by AI · Data from public sources</p>
+    <p style="margin-top:8px">Price data from <a href="https://coingecko.com">CoinGecko</a></p>
+</footer>
+
+</body>
+</html>

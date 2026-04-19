@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto History | CryptoDaily</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .top-bar { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 6px 0; text-align: center; font-size: 0.78em; color: #555; }
+        .top-bar span { margin: 0 20px; }
+        header { background: #111; border-bottom: 3px solid #f7931a; padding: 18px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
+        .logo span { color: #fff; }
+        nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
+        nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
+        nav a:hover { color: #f7931a; border-bottom-color: #f7931a; }
+        nav a.active { color: #f7931a; border-bottom-color: #f7931a; }
+        .ad-banner { background: #111; border: 1px dashed #222; border-radius: 6px; text-align: center; color: #333; font-size: 0.78em; margin: 16px 40px; height: 90px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section-heading { font-size: 1em; font-weight: 700; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1e1e1e; padding-bottom: 10px; margin-bottom: 20px; margin-top: 40px; }
+        .card { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+        .card:hover { border-color: #333; }
+        .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 24px; margin-bottom: 30px; position: relative; }
+        .timeline-year { font-size: 1.3em; font-weight: 800; color: #f7931a; padding-top: 4px; }
+        .timeline-content { border-left: 2px solid #1e1e1e; padding-left: 24px; position: relative; }
+        .timeline-content::before { content: ''; position: absolute; left: -7px; top: 8px; width: 12px; height: 12px; background: #f7931a; border-radius: 50%; border: 2px solid #0a0a0a; }
+        .timeline-content h3 { color: #fff; font-size: 1.05em; margin-bottom: 8px; }
+        .timeline-content p { color: #999; font-size: 0.9em; line-height: 1.8; }
+        .fact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0; }
+        .fact-card { background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 8px; padding: 20px; text-align: center; }
+        .fact-card .fact-number { font-size: 1.8em; font-weight: 800; color: #f7931a; margin-bottom: 6px; }
+        .fact-card .fact-label { font-size: 0.78em; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .how-card { background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 8px; padding: 20px; }
+        .how-card h3 { color: #f7931a; font-size: 0.95em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .how-card p { color: #999; font-size: 0.87em; line-height: 1.8; }
+        footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 30px 40px; margin-top: 60px; text-align: center; font-size: 0.78em; color: #333; }
+    </style>
+</head>
+
+
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <span>📅 <span id="live-date"></span></span>
+    <span class="live">● LIVE</span>
+    <span id="live-price">Loading...</span>
+    <span>Updated: <span id="live-time"></span></span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo">₿<span>CryptoDaily</span></a>
+        <div style="color: #555; font-size: 0.85em;">The Complete Guide to Cryptocurrency</div>
+    </div>
+</header>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="news.html">Bitcoin News</a>
+        <a href="trends.html">Crypto Trends</a>
+        <a href="market.html">Market Data</a>
+        <a href="crypto-history.html" class="active">Crypto History</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<div class="ad-banner">ADVERTISEMENT</div>
+
+<div class="container">
+
+    <!-- Hero -->
+    <div style="padding: 40px 0 20px; text-align: center;">
+        <h1 style="font-size: 2.2em; font-weight: 800; color: #fff; margin-bottom: 12px;">The Complete History of Cryptocurrency</h1>
+        <p style="color: #666; font-size: 1em; max-width: 700px; margin: 0 auto; line-height: 1.8;">From a mysterious whitepaper in 2008 to a multi-trillion dollar industry — the full story of how digital money changed the world.</p>
+    </div>
+
+    <!-- Key Facts -->
+    <div class="fact-grid">
+        <div class="fact-card">
+            <div class="fact-number">2008</div>
+            <div class="fact-label">Bitcoin Whitepaper Published</div>
+        </div>
+        <div class="fact-card">
+            <div class="fact-number">21M</div>
+            <div class="fact-label">Maximum Bitcoin Supply Ever</div>
+        </div>
+        <div class="fact-card">
+            <div class="fact-number">$0.001</div>
+            <div class="fact-label">Bitcoin's First Known Price (2009)</div>
+        </div>
+        <div class="fact-card">
+            <div class="fact-number">10,000</div>
+            <div class="fact-label">BTC Paid for 2 Pizzas in 2010</div>
+        </div>
+        <div class="fact-card">
+            <div class="fact-number">20,000+</div>
+            <div class="fact-label">Cryptocurrencies Exist Today</div>
+        </div>
+        <div class="fact-card">
+            <div class="fact-number">$3T+</div>
+            <div class="fact-label">Peak Total Crypto Market Cap</div>
+        </div>
+    </div>
+
+    <!-- What is Crypto -->
+    <div class="section-heading">What is Cryptocurrency?</div>
+    <div class="card">
+        <p style="color: #bbb; font-size: 0.97em; line-height: 1.9; margin-bottom: 16px;">Cryptocurrency is a form of digital or virtual currency that uses cryptography — the science of encoding and decoding information — to secure transactions and control the creation of new units. Unlike traditional money issued by governments and controlled by banks, cryptocurrencies operate on decentralised networks, meaning no single person, company, or government controls them.</p>
+        <p style="color: #bbb; font-size: 0.97em; line-height: 1.9; margin-bottom: 16px;">The word "crypto" comes from cryptography. Every transaction made with a cryptocurrency is verified and recorded on a public digital ledger called a blockchain. This ledger is maintained by thousands of computers around the world simultaneously, making it nearly impossible to hack, alter, or forge.</p>
+        <p style="color: #bbb; font-size: 0.97em; line-height: 1.9;">Think of it like this: traditional banking is like a private diary that only your bank can read and edit. A cryptocurrency blockchain is like a public notice board where everyone can see every transaction, but no one can erase or change what's already been written.</p>
+    </div>
+
+    <!-- Who Created Bitcoin -->
+    <div class="section-heading">Who Created Bitcoin?</div>
+    <div class="card">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start;">
+            <div style="background: #0d0d0d; border-radius: 8px; padding: 20px; text-align: center; border: 1px solid #1e1e1e;">
+                <div style="font-size: 3em; margin-bottom: 10px;">👤</div>
+                <div style="font-size: 1.1em; font-weight: 800; color: #f7931a; margin-bottom: 6px;">Satoshi Nakamoto</div>
+                <div style="font-size: 0.78em; color: #555; line-height: 1.6;">Unknown identity<br>Active: 2008 – 2010<br>Holds ~1 million BTC</div>
+            </div>
+            <div>
+                <p style="color: #bbb; font-size: 0.97em; line-height: 1.9; margin-bottom: 14px;">Bitcoin was created by a person or group of people using the pseudonym <strong style="color: #f7931a;">Satoshi Nakamoto</strong>. To this day, nobody knows who Satoshi Nakamoto really is. The name could belong to a single person, a small team, or even a large organisation.</p>
+                <p style="color: #bbb; font-size: 0.97em; line-height: 1.9; margin-bottom: 14px;">On October 31, 2008 — during the height of the global financial crisis — Satoshi published a nine-page document titled <em style="color: #ccc;">"Bitcoin: A Peer-to-Peer Electronic Cash System."</em> This document, known as the Bitcoin whitepaper, described a system for sending money directly between people without needing a bank or any middleman.</p>
+                <p style="color: #bbb; font-size: 0.97em; line-height: 1.9;">On January 3, 2009, Satoshi mined the very first Bitcoin block — called the Genesis Block. Embedded in this block was a newspaper headline: <em style="color: #ccc;">"Chancellor on brink of second bailout for banks"</em> — a clear statement about why Bitcoin was needed. Satoshi disappeared from the internet in 2010 and has never been heard from since, leaving behind a fortune estimated at over 1 million Bitcoin.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="section-heading">How Does Cryptocurrency Work?</div>
+    <div class="how-grid">
+        <div class="how-card">
+            <h3>⛓️ Blockchain</h3>
+            <p>A blockchain is a chain of blocks, where each block contains a list of recent transactions. Once a block is full, it is sealed and linked to the previous block, forming a chain. This chain is stored on thousands of computers worldwide. Changing any block would require changing every block after it on every computer simultaneously — practically impossible.</p>
+        </div>
+        <div class="how-card">
+            <h3>🔑 Public & Private Keys</h3>
+            <p>Every crypto wallet has two keys — a public key (like your bank account number, safe to share) and a private key (like your PIN, never share this). When you send crypto, you sign the transaction with your private key. The network verifies this signature using your public key. No bank needed — the math does the work.</p>
+        </div>
+        <div class="how-card">
+            <h3>⛏️ Mining & Validation</h3>
+            <p>New Bitcoin transactions are verified by miners — powerful computers solving complex mathematical puzzles. The first miner to solve the puzzle gets to add the next block to the blockchain and earns newly created Bitcoin as a reward. This process, called Proof of Work, secures the network and creates new coins at a controlled, predictable rate.</p>
+        </div>
+        <div class="how-card">
+            <h3>💱 Wallets & Exchanges</h3>
+            <p>A crypto wallet doesn't actually store your coins — it stores your private keys. The coins live on the blockchain. You can use a software wallet (an app), a hardware wallet (a physical device), or keep coins on an exchange. Exchanges like Binance, Coinbase, and WazirX let you buy, sell, and trade cryptocurrencies using regular money.</p>
+        </div>
+        <div class="how-card">
+            <h3>📉 Halving</h3>
+            <p>Every 210,000 blocks (roughly every 4 years), the Bitcoin mining reward is cut in half. This is called the halving. It controls inflation by slowing the rate at which new Bitcoin enters circulation. Bitcoin has had four halvings so far. Each halving has historically been followed by a significant price increase as supply tightens while demand continues to grow.</p>
+        </div>
+        <div class="how-card">
+            <h3>🌐 Decentralisation</h3>
+            <p>No company, government, or individual controls Bitcoin. The network is maintained by thousands of nodes — computers running the Bitcoin software — spread across every country in the world. Even if an entire country shut down its internet, the rest of the network would continue running. This makes Bitcoin censorship-resistant and borderless.</p>
+        </div>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+
+    <!-- Timeline -->
+    <div class="section-heading">The Complete Crypto Timeline</div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2008</div>
+        <div class="timeline-content">
+            <h3>The Whitepaper</h3>
+            <p>On October 31, 2008, Satoshi Nakamoto published the Bitcoin whitepaper to a cryptography mailing list. The world was in the middle of a devastating financial crisis caused by banks. Bitcoin was proposed as an alternative — money that doesn't need banks, governments, or trust in any central authority.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-content">
+            <h3>Bitcoin Goes Live</h3>
+            <p>On January 3, 2009, Satoshi mined the Genesis Block and Bitcoin officially launched. The first Bitcoin transaction ever was sent on January 12 — Satoshi sent 10 BTC to Hal Finney, a cryptographer and early supporter. For most of 2009, Bitcoin had no monetary value and was only used by computer scientists and cryptography enthusiasts.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2010</div>
+        <div class="timeline-content">
+            <h3>Bitcoin Pizza Day & First Price</h3>
+            <p>On May 22, 2010, Laszlo Hanyecz made the first real-world Bitcoin purchase — paying 10,000 BTC for two pizzas. This day is celebrated every year as Bitcoin Pizza Day. Those 10,000 BTC would later be worth over $700 million at peak prices. Bitcoin's first tracked exchange price was $0.0008. By end of 2010 it had risen to $0.30.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2011</div>
+        <div class="timeline-content">
+            <h3>Bitcoin Reaches $1, First Altcoins Born</h3>
+            <p>Bitcoin hit $1 for the first time in February 2011 — a massive milestone. It then surged to $31 before crashing back to $2. The first alternative cryptocurrencies — called altcoins — were created, including Litecoin and Namecoin. The concept of cryptocurrency began spreading beyond cypherpunk communities into mainstream internet culture.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-content">
+            <h3>Bitcoin Breaks $1,000</h3>
+            <p>Bitcoin surpassed $1,000 for the first time in November 2013, capturing mainstream media attention worldwide. The Cyprus banking crisis earlier that year drove many people toward Bitcoin as an alternative store of value. The US Senate held hearings on Bitcoin, signalling that governments were beginning to take cryptocurrency seriously.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-content">
+            <h3>Ethereum Launches — Smart Contracts Born</h3>
+            <p>Vitalik Buterin launched Ethereum, introducing the concept of smart contracts — self-executing programs stored on a blockchain. This was a revolutionary step beyond simple currency. Ethereum allowed developers to build decentralised applications (dApps) on top of its blockchain, opening the door to an entirely new ecosystem of technology.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-content">
+            <h3>The Great Bull Run — Bitcoin Hits $20,000</h3>
+            <p>2017 was the year cryptocurrency went mainstream. Bitcoin surged from under $1,000 at the start of the year to nearly $20,000 by December. Thousands of new cryptocurrencies launched through ICOs (Initial Coin Offerings), raising billions of dollars. Ethereum, Ripple, and Litecoin saw gains of thousands of percent. The total crypto market cap exceeded $600 billion.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-content">
+            <h3>The Crypto Winter</h3>
+            <p>After the euphoric highs of 2017, the market crashed brutally in 2018. Bitcoin fell from $20,000 to under $3,500 — a drop of over 80%. Most altcoins lost 90-99% of their value. Many ICO projects were exposed as scams or failures. Despite the crash, development continued quietly — this period is known as the "crypto winter."</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-content">
+            <h3>Institutional Adoption Begins</h3>
+            <p>2020 marked a turning point — major institutions began buying Bitcoin. MicroStrategy invested $250 million of its treasury into Bitcoin. PayPal announced support for crypto purchases. Square bought $50 million in Bitcoin. The third Bitcoin halving occurred in May, reducing block rewards from 12.5 to 6.25 BTC. DeFi (Decentralised Finance) exploded in popularity on Ethereum.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-content">
+            <h3>Bitcoin Hits $69,000 — NFTs Explode</h3>
+            <p>Bitcoin reached its then all-time high of $69,000 in November 2021. El Salvador became the first country to adopt Bitcoin as legal tender — a historic moment. NFTs (Non-Fungible Tokens) became a cultural phenomenon, with digital artworks selling for millions. Elon Musk's tweets moved markets. The total crypto market cap surpassed $3 trillion.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">
+            <h3>Terra Collapse & FTX Scandal</h3>
+            <p>2022 brought devastating crashes. The Terra/LUNA ecosystem collapsed in May, wiping out $60 billion in value almost overnight. In November, FTX — one of the world's largest crypto exchanges — collapsed in a catastrophic fraud scandal. Its founder Sam Bankman-Fried was arrested and later convicted. Bitcoin fell below $16,000. Trust in centralised crypto companies was severely damaged.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+            <h3>Bitcoin ETFs Approved — New All-Time Highs</h3>
+            <p>The US Securities and Exchange Commission approved spot Bitcoin ETFs in January 2024 — a landmark moment that opened Bitcoin investment to millions of traditional investors. BlackRock, Fidelity, and other giants launched Bitcoin funds. The fourth Bitcoin halving occurred in April 2024. Bitcoin surged to new all-time highs above $73,000, driven by unprecedented institutional demand.</p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-year">2025+</div>
+        <div class="timeline-content">
+            <h3>The Future of Crypto</h3>
+            <p>Cryptocurrency continues to evolve rapidly. Layer 2 solutions are making Bitcoin and Ethereum faster and cheaper. More countries are exploring central bank digital currencies (CBDCs). Institutional adoption keeps growing. The debate over regulation, privacy, and energy consumption continues globally. One thing is certain — the technology that started with a nine-page whitepaper in 2008 has permanently changed how the world thinks about money.</p>
+        </div>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+
+    <!-- Types of Crypto -->
+    <div class="section-heading">Major Types of Cryptocurrency</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 30px;">
+        <div class="card" style="border-top: 3px solid #f7931a;">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">₿</div>
+            <h3 style="color: #f7931a; margin-bottom: 10px;">Bitcoin (BTC)</h3>
+            <p style="color: #999; font-size: 0.87em; line-height: 1.8;">The original cryptocurrency. Designed as a store of value and peer-to-peer payment system. Limited to 21 million coins. Often called digital gold.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #90caf9;">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">Ξ</div>
+            <h3 style="color: #90caf9; margin-bottom: 10px;">Ethereum (ETH)</h3>
+            <p style="color: #999; font-size: 0.87em; line-height: 1.8;">A programmable blockchain enabling smart contracts and decentralised apps. The foundation of DeFi, NFTs, and thousands of tokens built on top of it.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #4caf50;">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">💵</div>
+            <h3 style="color: #4caf50; margin-bottom: 10px;">Stablecoins</h3>
+            <p style="color: #999; font-size: 0.87em; line-height: 1.8;">Cryptocurrencies pegged to real-world assets like the US Dollar. Examples: USDT, USDC. Used for trading, saving, and avoiding volatility while staying in crypto.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #ce93d8;">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">🏦</div>
+            <h3 style="color: #ce93d8; margin-bottom: 10px;">DeFi Tokens</h3>
+            <p style="color: #999; font-size: 0.87em; line-height: 1.8;">Tokens powering decentralised finance applications — lending, borrowing, trading — without banks. Examples: Uniswap (UNI), Aave (AAVE), Compound (COMP).</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #ff9800;">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">🐕</div>
+            <h3 style="color: #ff9800; margin-bottom: 10px;">Meme Coins</h3>
+            <p style="color: #999; font-size: 0.87em; line-height: 1.8;">Coins started as jokes that gained real communities and value. Examples: Dogecoin (DOGE), Shiba Inu (SHIB). Extremely volatile and speculative.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #f44336;">
+            <div style="font-size: 1.5em; margin-bottom: 10px;">🔗</div>
+            <h3 style="color: #f44336; margin-bottom: 10px;">Layer 1 & Layer 2</h3>
+            <p style="color: #999; font-size: 0.87em; line-height: 1.8;">Layer 1s are base blockchains (Solana, Avalanche). Layer 2s are built on top to add speed and lower fees (Lightning Network, Polygon, Arbitrum).</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 CryptoDaily. All rights reserved. Content provided for educational purposes only. Not financial advice.</p>
+</footer>
+
+<script>
+// Live date and time
+const now = new Date();
+document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
+
+// Live BTC price
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+  .then(r => r.json())
+  .then(data => {
+    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
+    const change = data.bitcoin.usd_24h_change.toFixed(2);
+    const arrow = change >= 0 ? '▲' : '▼';
+    const color = change >= 0 ? '#4caf50' : '#f44336';
+    document.getElementById('live-price').innerHTML =
+      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
+  })
+  .catch(() => {
+    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
+  });
+</script>
+
+</body>
+</html>

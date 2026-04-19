@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | CryptoDaily</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .top-bar { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 6px 0; text-align: center; font-size: 0.78em; color: #555; }
+        .top-bar span { margin: 0 20px; }
+        header { background: #111; border-bottom: 3px solid #f7931a; padding: 18px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
+        .logo span { color: #fff; }
+        nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
+        nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
+        nav a:hover { color: #f7931a; border-bottom-color: #f7931a; }
+        nav a.active { color: #f7931a; border-bottom-color: #f7931a; }
+        .ad-banner { background: #111; border: 1px dashed #222; border-radius: 6px; text-align: center; color: #333; font-size: 0.78em; margin: 16px 40px; height: 90px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section-heading { font-size: 1em; font-weight: 700; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1e1e1e; padding-bottom: 10px; margin-bottom: 20px; margin-top: 40px; }
+        .card { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+        footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 30px 40px; margin-top: 60px; text-align: center; font-size: 0.78em; color: #333; }
+    </style>
+</head>
+
+
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <span>📅 <span id="live-date"></span></span>
+    <span class="live">● LIVE</span>
+    <span id="live-price">Loading...</span>
+    <span>Updated: <span id="live-time"></span></span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo">₿<span>CryptoDaily</span></a>
+        <div style="color: #555; font-size: 0.85em;">Your Trusted Crypto News Source</div>
+    </div>
+</header>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="news.html">Bitcoin News</a>
+        <a href="trends.html">Crypto Trends</a>
+        <a href="market.html">Market Data</a>
+        <a href="crypto-history.html">Crypto History</a>
+        <a href="about.html" class="active">About</a>
+    </div>
+</nav>
+
+<div class="ad-banner">ADVERTISEMENT</div>
+
+<div class="container">
+
+    <!-- Hero -->
+    <div style="padding: 50px 0 30px; text-align: center;">
+        <div style="font-size: 3em; margin-bottom: 16px;">₿</div>
+        <h1 style="font-size: 2.2em; font-weight: 800; color: #fff; margin-bottom: 12px;">About CryptoDaily</h1>
+        <p style="color: #666; font-size: 1em; max-width: 600px; margin: 0 auto; line-height: 1.8;">Your trusted, independent source for daily Bitcoin and cryptocurrency news, market data, and education.</p>
+    </div>
+
+    <!-- Mission -->
+    <div class="section-heading">Our Mission</div>
+    <div class="card">
+        <p style="color: #bbb; font-size: 0.97em; line-height: 1.9; margin-bottom: 16px;">CryptoDaily was built with one goal in mind — to make cryptocurrency news and data accessible to everyone. Whether you are a complete beginner hearing about Bitcoin for the first time, or an experienced trader tracking daily market movements, CryptoDaily gives you everything you need in one place.</p>
+        <p style="color: #bbb; font-size: 0.97em; line-height: 1.9; margin-bottom: 16px;">We believe that access to clear, unbiased, and timely financial information should not be locked behind paywalls or buried under technical jargon. Our content is always free, always updated, and written in plain language that anyone can understand.</p>
+        <p style="color: #bbb; font-size: 0.97em; line-height: 1.9;">Every day we bring you the latest Bitcoin headlines, full market data across the top 50 cryptocurrencies, trending coin analysis, whale transaction monitoring, and the Fear & Greed index — all in one clean, easy-to-navigate website.</p>
+    </div>
+
+    <!-- What We Cover -->
+    <div class="section-heading">What We Cover</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 30px;">
+        <div class="card" style="border-top: 3px solid #f7931a; text-align: center;">
+            <div style="font-size: 2em; margin-bottom: 12px;">📰</div>
+            <h3 style="color: #f7931a; margin-bottom: 10px; font-size: 0.95em;">Daily Bitcoin News</h3>
+            <p style="color: #999; font-size: 0.85em; line-height: 1.8;">Fresh Bitcoin and crypto news every day, sourced from the world's leading crypto publications and analysed in depth.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #90caf9; text-align: center;">
+            <div style="font-size: 2em; margin-bottom: 12px;">📊</div>
+            <h3 style="color: #90caf9; margin-bottom: 10px; font-size: 0.95em;">Live Market Data</h3>
+            <p style="color: #999; font-size: 0.85em; line-height: 1.8;">Real-time prices, market caps, trading volumes, and percentage changes for the top 50 cryptocurrencies.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #4caf50; text-align: center;">
+            <div style="font-size: 2em; margin-bottom: 12px;">🔥</div>
+            <h3 style="color: #4caf50; margin-bottom: 10px; font-size: 0.95em;">Trending Coins</h3>
+            <p style="color: #999; font-size: 0.85em; line-height: 1.8;">The most searched and talked-about cryptocurrencies each day, plus top gainers and losers across the market.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #ce93d8; text-align: center;">
+            <div style="font-size: 2em; margin-bottom: 12px;">🐋</div>
+            <h3 style="color: #ce93d8; margin-bottom: 10px; font-size: 0.95em;">Whale Tracking</h3>
+            <p style="color: #999; font-size: 0.85em; line-height: 1.8;">Large Bitcoin transactions monitored daily. Know when big players are moving significant amounts of crypto.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #ff9800; text-align: center;">
+            <div style="font-size: 2em; margin-bottom: 12px;">😨</div>
+            <h3 style="color: #ff9800; margin-bottom: 10px; font-size: 0.95em;">Fear & Greed Index</h3>
+            <p style="color: #999; font-size: 0.85em; line-height: 1.8;">Daily market sentiment analysis showing whether investors are fearful or greedy — a key indicator of potential market direction.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid #f44336; text-align: center;">
+            <div style="font-size: 2em; margin-bottom: 12px;">📚</div>
+            <h3 style="color: #f44336; margin-bottom: 10px; font-size: 0.95em;">Crypto Education</h3>
+            <p style="color: #999; font-size: 0.85em; line-height: 1.8;">A complete history of cryptocurrency — from the Bitcoin whitepaper to today — explained in simple, accessible language.</p>
+        </div>
+    </div>
+
+    <!-- Data Sources -->
+    <div class="section-heading">Our Data Sources</div>
+    <div class="card">
+        <p style="color: #bbb; font-size: 0.95em; line-height: 1.9; margin-bottom: 20px;">We believe in full transparency about where our data comes from. CryptoDaily uses only reputable, publicly available data sources:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="background: #0d0d0d; border-radius: 8px; padding: 16px 20px; border: 1px solid #1e1e1e;">
+                <div style="font-weight: 700; color: #f7931a; margin-bottom: 6px;">CoinGecko API</div>
+                <p style="color: #888; font-size: 0.85em; line-height: 1.7;">Price data, market caps, trading volumes, trending coins, and all cryptocurrency market statistics. One of the world's most trusted crypto data providers.</p>
+            </div>
+            <div style="background: #0d0d0d; border-radius: 8px; padding: 16px 20px; border: 1px solid #1e1e1e;">
+                <div style="font-weight: 700; color: #f7931a; margin-bottom: 6px;">Alternative.me</div>
+                <p style="color: #888; font-size: 0.85em; line-height: 1.7;">The Fear & Greed Index and its 7-day historical data. This index analyses volatility, market momentum, social media, and surveys to produce a daily sentiment score.</p>
+            </div>
+            <div style="background: #0d0d0d; border-radius: 8px; padding: 16px 20px; border: 1px solid #1e1e1e;">
+                <div style="font-weight: 700; color: #f7931a; margin-bottom: 6px;">Blockchain.info</div>
+                <p style="color: #888; font-size: 0.85em; line-height: 1.7;">Live Bitcoin blockchain data including unconfirmed transactions, whale movements, and network statistics directly from the Bitcoin network.</p>
+            </div>
+            <div style="background: #0d0d0d; border-radius: 8px; padding: 16px 20px; border: 1px solid #1e1e1e;">
+                <div style="font-weight: 700; color: #f7931a; margin-bottom: 6px;">RSS News Feeds</div>
+                <p style="color: #888; font-size: 0.85em; line-height: 1.7;">News sourced daily from CoinTelegraph, Bitcoin Magazine, and CoinDesk — three of the most established and respected publications in the cryptocurrency space.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="section-heading">Important Disclaimer</div>
+    <div class="card" style="border-left: 4px solid #f44336;">
+        <p style="color: #bbb; font-size: 0.95em; line-height: 1.9; margin-bottom: 14px;"><strong style="color: #f44336;">Not Financial Advice.</strong> All content published on CryptoDaily is for informational and educational purposes only. Nothing on this website should be interpreted as financial, investment, legal, or tax advice.</p>
+        <p style="color: #bbb; font-size: 0.95em; line-height: 1.9; margin-bottom: 14px;">Cryptocurrency markets are highly volatile. Prices can rise or fall dramatically in short periods. You should never invest more than you can afford to lose. Always do your own research before making any investment decisions.</p>
+        <p style="color: #bbb; font-size: 0.95em; line-height: 1.9;">CryptoDaily does not endorse any specific cryptocurrency, exchange, or investment product. We are an independent publication with no financial relationships with any crypto projects or companies.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="section-heading">Get In Touch</div>
+    <div class="card" style="text-align: center; padding: 40px;">
+        <div style="font-size: 2em; margin-bottom: 16px;">✉️</div>
+        <h3 style="color: #fff; font-size: 1.1em; margin-bottom: 12px;">Have a suggestion or found an error?</h3>
+        <p style="color: #888; font-size: 0.9em; line-height: 1.8; max-width: 500px; margin: 0 auto 20px;">We welcome feedback, corrections, and story suggestions. If you spot an error in our data or reporting, please let us know and we will investigate promptly.</p>
+        <a href="mailto:contact@cryptodaily.com" style="background: #f7931a; color: #000; text-decoration: none; padding: 12px 30px; border-radius: 6px; font-weight: 700; font-size: 0.9em;">Contact Us →</a>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+
+</div>
+
+<footer>
+    <p>© 2026 CryptoDaily. All rights reserved. Content provided for informational and educational purposes only. Not financial advice.</p>
+</footer>
+
+<script>
+// Live date and time
+const now = new Date();
+document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
+
+// Live BTC price
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+  .then(r => r.json())
+  .then(data => {
+    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
+    const change = data.bitcoin.usd_24h_change.toFixed(2);
+    const arrow = change >= 0 ? '▲' : '▼';
+    const color = change >= 0 ? '#4caf50' : '#f44336';
+    document.getElementById('live-price').innerHTML =
+      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
+  })
+  .catch(() => {
+    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
+  });
+</script>
+
+</body>
+</html>

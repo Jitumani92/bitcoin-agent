@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | CryptoDaily</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .top-bar { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 6px 0; text-align: center; font-size: 0.78em; color: #555; }
+        .top-bar span { margin: 0 20px; }
+        .live { color: #4caf50; }
+        header { background: #111; border-bottom: 3px solid #f7931a; padding: 18px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
+        .logo span { color: #fff; }
+        .header-price .btc-price { font-size: 1.4em; font-weight: 700; color: #f7931a; }
+        .header-price .btc-change { font-size: 0.85em; color: #4caf50; }
+        .header-price .btc-change.down { color: #f44336; }
+        nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
+        nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
+        nav a:hover { color: #f7931a; border-bottom-color: #f7931a; }
+        nav a.active { color: #f7931a; border-bottom-color: #f7931a; }
+        .ad-banner { background: #111; border: 1px dashed #222; border-radius: 6px; text-align: center; color: #333; font-size: 0.78em; margin: 16px 40px; height: 90px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section-heading { font-size: 1em; font-weight: 700; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1e1e1e; padding-bottom: 10px; margin-bottom: 20px; margin-top: 30px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 700; }
+        .badge-up { background: #0d2d0d; color: #4caf50; }
+        .badge-down { background: #2d0d0d; color: #f44336; }
+        .card { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 20px; margin-bottom: 20px; transition: border-color 0.2s; }
+        .card:hover { border-color: #333; }
+        footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 40px; margin-top: 60px; }
+    </style>
+</head>
+
+
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <span>📅 <span id="live-date"></span></span>
+    <span class="live">● LIVE</span>
+    <span id="live-price">Loading...</span>
+    <span>Updated: <span id="live-time"></span></span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo">₿<span>CryptoDaily</span></a>
+        <div class="header-price">
+            <div class="btc-price">{{ price }}</div>
+            <div class="btc-change {{ change_class }}">{{ change }}</div>
+        </div>
+    </div>
+</header>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="active">Home</a>
+        <a href="news.html">Bitcoin News</a>
+        <a href="trends.html">Crypto Trends</a>
+        <a href="market.html">Market Data</a>
+        <a href="crypto-history.html">Crypto History</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<!-- Ad -->
+<div class="ad-banner">ADVERTISEMENT</div>
+
+<!-- Hero Stats -->
+<div style="background: #111; border-bottom: 1px solid #1e1e1e; padding: 30px 0;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+
+            <div class="card" style="border-left: 4px solid #f7931a; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Bitcoin Price</div>
+                <div style="font-size: 1.9em; font-weight: 800; color: #f7931a;">{{ price }}</div>
+                <div class="badge {{ 'badge-up' if change_class == 'up' else 'badge-down' }}" style="margin-top: 8px;">{{ change }}</div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #9c27b0; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Total Market Cap</div>
+                <div style="font-size: 1.5em; font-weight: 800; color: #ce93d8;">{{ overview.total_mcap_fmt }}</div>
+                <div class="badge {{ 'badge-up' if overview.mcap_change_24h >= 0 else 'badge-down' }}" style="margin-top: 8px;">{{ overview.mcap_change_24h }}% (24h)</div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #2196f3; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">BTC Dominance</div>
+                <div style="font-size: 1.9em; font-weight: 800; color: #90caf9;">{{ overview.btc_dominance }}%</div>
+                <div style="font-size: 0.8em; color: #555; margin-top: 8px;">ETH: {{ overview.eth_dominance }}%</div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid {{ fear_greed_color }}; margin-bottom: 0;">
+                <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Fear & Greed</div>
+                <div style="font-size: 1.9em; font-weight: 800; color: {{ fear_greed_color }};">{{ fear_greed.value }}</div>
+                <div style="font-size: 0.85em; color: {{ fear_greed_color }}; margin-top: 8px; font-weight: 600;">{{ fear_greed.label }}</div>
+            </div>
+        </div>
+
+        <!-- Market Bar -->
+        <div style="background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 8px; padding: 14px 20px; display: flex; gap: 30px; flex-wrap: wrap; font-size: 0.83em;">
+            <div><span style="color: #555;">Active Coins:</span> <span style="color: #e0e0e0; font-weight: 600;">{{ overview.active_coins }}</span></div>
+            <div><span style="color: #555;">24h Volume:</span> <span style="color: #e0e0e0; font-weight: 600;">{{ overview.total_volume_fmt }}</span></div>
+            <div><span style="color: #555;">BTC High (24h):</span> <span style="color: #4caf50; font-weight: 600;">{{ btc_high }}</span></div>
+            <div><span style="color: #555;">BTC Low (24h):</span> <span style="color: #f44336; font-weight: 600;">{{ btc_low }}</span></div>
+            <div><span style="color: #555;">BTC ATH:</span> <span style="color: #f7931a; font-weight: 600;">{{ btc_ath }}</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Daily Intro -->
+    <div style="background: #111; border: 1px solid #222; border-left: 4px solid #f7931a; border-radius: 8px; padding: 24px; margin: 24px 0;">
+        <div style="font-size: 0.75em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">📋 Today's Overview — {{ date }}</div>
+        <p style="color: #ccc; font-size: 1.05em; line-height: 1.85;">{{ intro }}</p>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+
+    <!-- Main Grid -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 10px;">
+
+        <!-- Left: News -->
+        <div>
+            <div class="section-heading">Today's Top Stories</div>
+            {% for item in articles %}
+            <div class="card">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story {{ loop.index }}</div>
+                <div style="font-size: 1.2em; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4;">{{ item.title }}</div>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 14px;">
+                    <span>📰 {{ item.source }}</span>
+                    <span style="margin-left: 16px;">📅 {{ date }}</span>
+                </div>
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8;">{{ item.paragraphs[0] if item.paragraphs else '' }}</div>
+                {% if item.paragraphs|length > 1 %}
+                <div style="color: #bbb; font-size: 0.93em; line-height: 1.8; margin-top: 12px;">{{ item.paragraphs[1] }}</div>
+                {% endif %}
+                {% if item.takeaway %}
+                <div style="background: #0d1a0d; border-left: 3px solid #4caf50; border-radius: 4px; padding: 10px 14px; margin-top: 14px; color: #8bc34a; font-size: 0.87em; font-style: italic;">💡 {{ item.takeaway }}</div>
+                {% endif %}
+                <div style="margin-top: 14px; display: flex; gap: 10px;">
+                    {% if item.link %}<a href="{{ item.link }}" target="_blank" style="color: #f7931a; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #f7931a; padding: 5px 14px; border-radius: 4px;">Read Original →</a>{% endif %}
+                    <a href="news.html" style="color: #888; text-decoration: none; font-size: 0.82em; font-weight: 600; border: 1px solid #333; padding: 5px 14px; border-radius: 4px;">Full Coverage →</a>
+                </div>
+            </div>
+            {% endfor %}
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="news.html" style="background: #f7931a; color: #000; text-decoration: none; padding: 12px 30px; border-radius: 6px; font-weight: 700; font-size: 0.9em;">View All News Articles →</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Fear & Greed -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">Fear & Greed Index</div>
+                <div style="text-align: center; margin: 10px 0 20px;">
+                    <div style="font-size: 3.5em; font-weight: 800; color: {{ fear_greed_color }};">{{ fear_greed.value }}</div>
+                    <div style="font-size: 1.1em; color: {{ fear_greed_color }}; font-weight: 600; margin-top: 4px;">{{ fear_greed.label }}</div>
+                </div>
+                <div style="background: linear-gradient(to right, #f44336, #ff9800, #ffeb3b, #8bc34a, #4caf50); height: 8px; border-radius: 4px; position: relative; margin-bottom: 6px;">
+                    <div style="position: absolute; top: -4px; left: {{ fear_greed.value }}%; width: 16px; height: 16px; background: #fff; border-radius: 50%; transform: translateX(-50%); border: 2px solid #333;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.72em; color: #555; margin-top: 8px;">
+                    <span>Extreme Fear</span><span>Neutral</span><span>Extreme Greed</span>
+                </div>
+                <div style="margin-top: 16px;">
+                    <div style="font-size: 0.75em; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">7-Day History</div>
+                    {% for h in fear_greed.history %}
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; padding: 4px 0; border-bottom: 1px solid #1a1a1a;">
+                        <span style="color: #555;">Day {{ loop.index }}</span>
+                        <span style="color: {{ '#4caf50' if h.value >= 60 else ('#f44336' if h.value <= 40 else '#f7931a') }}; font-weight: 600;">{{ h.value }} — {{ h.label }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Trending -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">🔥 Trending Now</div>
+                {% for coin in trending[:7] %}
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="{{ coin.image }}" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.88em; color: #e0e0e0;">{{ coin.name }}</div>
+                            <div style="font-size: 0.75em; color: #555;">{{ coin.symbol }}</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #{{ coin.rank }}</div>
+                </div>
+                {% endfor %}
+                <a href="trends.html" style="display: block; text-align: center; margin-top: 14px; color: #f7931a; font-size: 0.83em; font-weight: 600; text-decoration: none;">View Full Trends →</a>
+            </div>
+
+            <div class="ad-banner" style="height: 250px; margin: 0 0 20px;">AD</div>
+
+            <!-- Whale Transactions -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">🐋 Whale Transactions</div>
+                {% for whale in whales[:5] %}
+                <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-weight: 600; font-size: 0.88em; color: #f7931a;">{{ whale.title }}</div>
+                    <div style="font-size: 0.78em; color: #555; margin-top: 4px;">{{ whale.date }}</div>
+                    {% if whale.link %}<a href="{{ whale.link }}" target="_blank" style="font-size: 0.75em; color: #888; text-decoration: none;">View Transaction →</a>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Top 10 Table -->
+    <div class="section-heading" style="margin-top: 40px;">Top 10 Cryptocurrencies</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.88em;">
+            <thead>
+                <tr style="background: #0d0d0d; border-bottom: 1px solid #1e1e1e;">
+                    <th style="padding: 14px 16px; text-align: left; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">#</th>
+                    <th style="padding: 14px 16px; text-align: left; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Name</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Price</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">1h %</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">24h %</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">7d %</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Market Cap</th>
+                    <th style="padding: 14px 16px; text-align: right; color: #555; font-weight: 600; text-transform: uppercase; font-size: 0.78em;">Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for coin in top_coins[:10] %}
+                <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                    <td style="padding: 14px 16px; color: #555;">{{ coin.rank }}</td>
+                    <td style="padding: 14px 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="{{ coin.image }}" width="28" height="28" style="border-radius: 50%;" onerror="this.style.display='none'">
+                            <div>
+                                <div style="font-weight: 600; color: #e0e0e0;">{{ coin.name }}</div>
+                                <div style="font-size: 0.78em; color: #555;">{{ coin.symbol }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="padding: 14px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">{{ coin.price_fmt }}</td>
+                    <td style="padding: 14px 16px; text-align: right; color: {{ '#4caf50' if coin.change_1h >= 0 else '#f44336' }}; font-weight: 600;">{{ '+' if coin.change_1h >= 0 else '' }}{{ coin.change_1h }}%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: {{ '#4caf50' if coin.change_24h >= 0 else '#f44336' }}; font-weight: 600;">{{ '+' if coin.change_24h >= 0 else '' }}{{ coin.change_24h }}%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: {{ '#4caf50' if coin.change_7d >= 0 else '#f44336' }}; font-weight: 600;">{{ '+' if coin.change_7d >= 0 else '' }}{{ coin.change_7d }}%</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">{{ coin.market_cap_fmt }}</td>
+                    <td style="padding: 14px 16px; text-align: right; color: #888;">{{ coin.volume_fmt }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center; margin: 16px 0 40px;">
+        <a href="trends.html" style="color: #f7931a; text-decoration: none; font-size: 0.88em; font-weight: 600; border: 1px solid #f7931a; padding: 10px 24px; border-radius: 6px;">View All 50 Cryptocurrencies →</a>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+        <div>
+            <div style="font-size: 1.4em; font-weight: 800; color: #f7931a; margin-bottom: 12px;">₿CryptoDaily</div>
+            <p style="color: #444; font-size: 0.83em; line-height: 1.7;">Your trusted source for daily cryptocurrency news, market data, and analysis.</p>
+        </div>
+        <div>
+            <h4 style="color: #f7931a; font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px;">Pages</h4>
+            <a href="index.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Home</a>
+            <a href="news.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Bitcoin News</a>
+            <a href="trends.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Crypto Trends</a>
+            <a href="market.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Market Data</a>
+        </div>
+        <div>
+            <h4 style="color: #f7931a; font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px;">More</h4>
+            <a href="crypto-history.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Crypto History</a>
+            <a href="about.html" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">About Us</a>
+        </div>
+        <div>
+            <h4 style="color: #f7931a; font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px;">Data Sources</h4>
+            <a href="https://coingecko.com" target="_blank" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">CoinGecko</a>
+            <a href="https://alternative.me" target="_blank" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Alternative.me</a>
+            <a href="https://blockchain.info" target="_blank" style="display: block; color: #555; text-decoration: none; font-size: 0.83em; margin-bottom: 8px;">Blockchain.info</a>
+        </div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid #1a1a1a; padding-top: 20px; display: flex; justify-content: space-between; font-size: 0.78em; color: #333;">
+        <span>© {{ date }} CryptoDaily. All rights reserved.</span>
+        <span>Data provided for informational purposes only. Not financial advice.</span>
+    </div>
+</footer>
+<script>
+// Live date and time
+const now = new Date();
+document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
+
+// Live BTC price
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+  .then(r => r.json())
+  .then(data => {
+    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
+    const change = data.bitcoin.usd_24h_change.toFixed(2);
+    const arrow = change >= 0 ? '▲' : '▼';
+    const color = change >= 0 ? '#4caf50' : '#f44336';
+    document.getElementById('live-price').innerHTML =
+      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
+  })
+  .catch(() => {
+    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
+  });
+</script>
+</body>
+</html>

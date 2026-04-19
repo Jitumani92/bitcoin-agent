@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Trends | CryptoDaily</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .top-bar { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 6px 0; text-align: center; font-size: 0.78em; color: #555; }
+        .top-bar span { margin: 0 20px; }
+        .live { color: #4caf50; }
+        header { background: #111; border-bottom: 3px solid #f7931a; padding: 18px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
+        .logo span { color: #fff; }
+        .header-price .btc-price { font-size: 1.4em; font-weight: 700; color: #f7931a; }
+        .header-price .btc-change { font-size: 0.85em; color: #4caf50; }
+        .header-price .btc-change.down { color: #f44336; }
+        nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
+        nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
+        nav a:hover { color: #f7931a; border-bottom-color: #f7931a; }
+        nav a.active { color: #f7931a; border-bottom-color: #f7931a; }
+        .ad-banner { background: #111; border: 1px dashed #222; border-radius: 6px; text-align: center; color: #333; font-size: 0.78em; margin: 16px 40px; height: 90px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section-heading { font-size: 1em; font-weight: 700; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1e1e1e; padding-bottom: 10px; margin-bottom: 20px; margin-top: 30px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 700; }
+        .badge-up { background: #0d2d0d; color: #4caf50; }
+        .badge-down { background: #2d0d0d; color: #f44336; }
+        .card { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 20px; margin-bottom: 20px; transition: border-color 0.2s; }
+        .card:hover { border-color: #333; }
+        footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 30px 40px; margin-top: 60px; text-align: center; font-size: 0.78em; color: #333; }
+        input[type="text"] { background: #111; border: 1px solid #333; border-radius: 6px; padding: 10px 16px; color: #e0e0e0; font-size: 0.9em; width: 100%; outline: none; }
+        input[type="text"]:focus { border-color: #f7931a; }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <span>📅 <span id="live-date"></span></span>
+    <span class="live">● LIVE</span>
+    <span id="live-price">Loading...</span>
+    <span>Updated: <span id="live-time"></span></span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo">₿<span>CryptoDaily</span></a>
+        <div class="header-price">
+            <div class="btc-price">$75,601.00</div>
+            <div class="btc-change down">▼ 2.04% (24h)</div>
+        </div>
+    </div>
+</header>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="news.html">Bitcoin News</a>
+        <a href="trends.html" class="active">Crypto Trends</a>
+        <a href="market.html">Market Data</a>
+        <a href="crypto-history.html">Crypto History</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<div class="ad-banner">ADVERTISEMENT</div>
+
+<div class="container">
+
+    <!-- Page Header -->
+    <div style="padding: 30px 0 10px;">
+        <h1 style="font-size: 1.8em; font-weight: 800; color: #fff; margin-bottom: 8px;">Crypto Trends</h1>
+        <p style="color: #666; font-size: 0.9em;">Trending cryptocurrencies, top 50 by market cap, and real-time market data. Updated daily.</p>
+    </div>
+
+    <!-- Market Overview Cards -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin: 20px 0;">
+        <div class="card" style="border-left: 4px solid #f7931a; margin-bottom: 0;">
+            <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Total Market Cap</div>
+            <div style="font-size: 1.4em; font-weight: 800; color: #f7931a;">$2.64T</div>
+            <div class="badge badge-down" style="margin-top: 8px;">-2.19% (24h)</div>
+        </div>
+        <div class="card" style="border-left: 4px solid #2196f3; margin-bottom: 0;">
+            <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">24h Volume</div>
+            <div style="font-size: 1.4em; font-weight: 800; color: #90caf9;">$104.53B</div>
+            <div style="font-size: 0.8em; color: #555; margin-top: 8px;">Global trading volume</div>
+        </div>
+        <div class="card" style="border-left: 4px solid #9c27b0; margin-bottom: 0;">
+            <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">BTC Dominance</div>
+            <div style="font-size: 1.4em; font-weight: 800; color: #ce93d8;">57.51%</div>
+            <div style="font-size: 0.8em; color: #555; margin-top: 8px;">ETH: 10.74%</div>
+        </div>
+        <div class="card" style="border-left: 4px solid #4caf50; margin-bottom: 0;">
+            <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Active Coins</div>
+            <div style="font-size: 1.4em; font-weight: 800; color: #4caf50;">17576</div>
+            <div style="font-size: 0.8em; color: #555; margin-top: 8px;">Tracked by CoinGecko</div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+
+        <!-- Left: Full 50 Table -->
+        <div>
+            <!-- Search -->
+            <div style="margin: 20px 0 10px;">
+                <input type="text" id="searchInput" placeholder="🔍 Search coins by name or symbol..." onkeyup="filterTable()">
+            </div>
+
+            <div class="section-heading">Top 50 Cryptocurrencies by Market Cap</div>
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <table id="coinTable" style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+                    <thead>
+                        <tr style="background: #0d0d0d; border-bottom: 1px solid #1e1e1e;">
+                            <th style="padding: 12px 16px; text-align: left; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">#</th>
+                            <th style="padding: 12px 16px; text-align: left; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">Coin</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">Price</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">1h</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">24h</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">7d</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">Market Cap</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">24h High</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">24h Low</th>
+                            <th style="padding: 12px 16px; text-align: right; color: #555; font-weight: 600; font-size: 0.78em; text-transform: uppercase;">ATH</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coinTableBody">
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">1</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Bitcoin</div>
+                                        <div style="font-size: 0.75em; color: #555;">BTC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$75,749.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.3%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-1.63%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+5.7%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.52T</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$77,243.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$75,404.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$126,080.00</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">2</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Ethereum</div>
+                                        <div style="font-size: 0.75em; color: #555;">ETH</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$2,343.91</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.07%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.57%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+5.32%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$282.93B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$2,412.96</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$2,335.50</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$4,946.05</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">3</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Tether</div>
+                                        <div style="font-size: 0.75em; color: #555;">USDT</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$186.67B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.32</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">4</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">XRP</div>
+                                        <div style="font-size: 0.75em; color: #555;">XRP</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.43</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.14%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.24%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+7.32%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$88.19B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.48</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.42</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$3.65</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">5</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">BNB</div>
+                                        <div style="font-size: 0.75em; color: #555;">BNB</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$624.41</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.06%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.76%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.48%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$84.17B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$648.56</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$622.54</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1,369.99</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">6</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">USDC</div>
+                                        <div style="font-size: 0.75em; color: #555;">USDC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9998</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+-0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.02%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$78.47B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9983</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.04</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">7</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Solana</div>
+                                        <div style="font-size: 0.75em; color: #555;">SOL</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$85.91</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.27%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.85%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.87%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$49.43B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$88.60</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$85.40</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$293.31</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">8</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/1094/large/photo_2026-04-13_09-59-16.png?1776048311" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">TRON</div>
+                                        <div style="font-size: 0.75em; color: #555;">TRX</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.3282</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.12%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.41%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+2.52%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$31.10B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.3301</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.3266</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.4313</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">9</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Figure Heloc</div>
+                                        <div style="font-size: 0.75em; color: #555;">FIGR_HELOC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.03</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.31%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.48%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$17.34B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.03</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.02</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.05</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">10</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Dogecoin</div>
+                                        <div style="font-size: 0.75em; color: #555;">DOGE</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.0948</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.02%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.76%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.57%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$14.58B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.0991</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.0944</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.7316</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">11</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/27045/large/wbt_token.png?1696526096" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">WhiteBIT Coin</div>
+                                        <div style="font-size: 0.75em; color: #555;">WBT</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$54.99</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.2%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-1.87%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.79%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$11.74B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$56.13</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$54.81</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$64.11</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">12</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/39926/large/usds.webp?1726666683" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">USDS</div>
+                                        <div style="font-size: 0.75em; color: #555;">USDS</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.04%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.04%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.04%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$11.11B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9995</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.15</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">13</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Hyperliquid</div>
+                                        <div style="font-size: 0.75em; color: #555;">HYPE</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$43.62</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.65%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.93%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+6.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$10.40B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$45.06</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$43.26</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$59.30</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">14</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/8418/large/leo-token.png?1696508607" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">LEO Token</div>
+                                        <div style="font-size: 0.75em; color: #555;">LEO</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$10.13</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.37%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.07%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.13%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$9.33B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$10.24</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$10.05</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$10.26</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">15</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/975/large/cardano.png?1696502090" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Cardano</div>
+                                        <div style="font-size: 0.75em; color: #555;">ADA</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.2487</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.09%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.34%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.74%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$9.19B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.2588</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.2475</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$3.09</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">16</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Bitcoin Cash</div>
+                                        <div style="font-size: 0.75em; color: #555;">BCH</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$445.43</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.17%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.11%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$8.92B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$454.55</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$443.73</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$3,785.82</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">17</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Chainlink</div>
+                                        <div style="font-size: 0.75em; color: #555;">LINK</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$9.27</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.49%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.33%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.81%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$6.74B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$9.63</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$9.18</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$52.70</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">18</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/69/large/monero_logo.png?1696501460" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Monero</div>
+                                        <div style="font-size: 0.75em; color: #555;">XMR</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$353.09</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.36%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+2.36%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.05%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$6.51B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$353.09</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$342.81</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$797.73</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">19</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/53247/large/square-bg-transparent.png?1752637478" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">MemeCore</div>
+                                        <div style="font-size: 0.75em; color: #555;">M</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$3.54</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-5.27%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-21.84%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+28.35%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$6.24B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$4.65</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$3.46</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$4.65</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">20</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/33613/large/usde.png?1733810059" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Ethena USDe</div>
+                                        <div style="font-size: 0.75em; color: #555;">USDE</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9995</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.01%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.05%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.02%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$5.80B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9992</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.03</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">21</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/100/large/fmpFRHHQ_400x400.jpg?1735231350" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Stellar</div>
+                                        <div style="font-size: 0.75em; color: #555;">XLM</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.1713</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.41%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-1.85%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+12.87%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$5.68B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.1751</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.1678</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.8756</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">22</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/70468/large/Canton-Ticker_%281%29.png?1762826299" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Canton</div>
+                                        <div style="font-size: 0.75em; color: #555;">CC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.1470</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.22%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-1.47%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.39%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$5.63B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.1492</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.1452</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.1942</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">23</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/486/large/circle-zcash-color.png?1696501740" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Zcash</div>
+                                        <div style="font-size: 0.75em; color: #555;">ZEC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$323.10</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.43%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-5.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-11.44%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$5.39B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$340.12</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$318.83</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$3,191.93</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">24</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/9956/large/Badge_Dai.png?1696509996" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Dai</div>
+                                        <div style="font-size: 0.75em; color: #555;">DAI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9997</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.01%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.03%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$4.36B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.9998</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9994</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.22</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">25</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/2/large/litecoin.png?1696501400" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Litecoin</div>
+                                        <div style="font-size: 0.75em; color: #555;">LTC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$55.77</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.36%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.82%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.14%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$4.30B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$56.63</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$55.33</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$410.26</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">26</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/54977/large/USD1_1000x1000_transparent.png?1749297002" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">USD1</div>
+                                        <div style="font-size: 0.75em; color: #555;">USD1</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.02%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.08%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$4.19B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9995</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.02</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">27</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/31212/large/PYUSD_Token_Logo_2x.png?1765987788" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">PayPal USD</div>
+                                        <div style="font-size: 0.75em; color: #555;">PYUSD</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9999</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+-0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+-0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$4.11B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9995</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.08</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">28</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1696512369" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Avalanche</div>
+                                        <div style="font-size: 0.75em; color: #555;">AVAX</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$9.32</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.16%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.65%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+2.02%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$4.02B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$9.73</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$9.23</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$144.96</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">29</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/3688/large/hbar.png?1696504364" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Hedera</div>
+                                        <div style="font-size: 0.75em; color: #555;">HBAR</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.0882</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.2%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.08%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.48%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$3.82B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.0903</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.0879</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.5692</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">30</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/26375/large/sui-ocean-square.png?1727791290" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Sui</div>
+                                        <div style="font-size: 0.75em; color: #555;">SUI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9492</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.13%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-5.14%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.69%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$3.76B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.01</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9449</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$5.35</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">31</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/69134/large/Rain_logo_1_.png?1762952191" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Rain</div>
+                                        <div style="font-size: 0.75em; color: #555;">RAIN</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.00764062</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.03%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+2.74%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.29%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$3.65B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.00777704</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.00740287</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.0109</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">32</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/11939/large/shiba.png?1696511800" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Shiba Inu</div>
+                                        <div style="font-size: 0.75em; color: #555;">SHIB</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.00000603</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.14%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.94%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+3.43%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$3.56B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.00000631</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.00000600</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.00008616</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">33</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/17980/large/photo_2024-09-10_17.09.00.jpeg?1725963446" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Toncoin</div>
+                                        <div style="font-size: 0.75em; color: #555;">TON</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.28</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.65%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-8.32%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-10.23%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$3.19B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.40</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.27</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$8.25</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">34</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/7310/large/cro_token_logo.png?1696507599" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Cronos</div>
+                                        <div style="font-size: 0.75em; color: #555;">CRO</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.0700</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.42%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.24%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.23%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$3.05B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.0718</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.0695</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.8915</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">35</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/51054/large/Hashnote_SDYC_200x200.png?1730370965" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Circle USYC</div>
+                                        <div style="font-size: 0.75em; color: #555;">USYC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.12</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.92B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.00000000</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.00000000</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.12</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">36</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/10481/large/logo.png?1774627372" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Tether Gold</div>
+                                        <div style="font-size: 0.75em; color: #555;">XAUT</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$4,784.05</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.2%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.65%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.55%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.68B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$4,815.71</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$4,772.61</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$5,504.62</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">37</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/50767/large/wlfi.png?1756438915" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">World Liberty Financial</div>
+                                        <div style="font-size: 0.75em; color: #555;">WLFI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.0789</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.49%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.17%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.78%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.51B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.0813</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.0778</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.3313</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">38</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/36291/large/blackrock.png?1711013223" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">BlackRock USD Institutional Digital Liquidity Fund</div>
+                                        <div style="font-size: 0.75em; color: #555;">BUIDL</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.50B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.00</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">39</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/9519/large/paxgold.png?1696509604" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">PAX Gold</div>
+                                        <div style="font-size: 0.75em; color: #555;">PAXG</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$4,787.01</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.31%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.67%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+1.38%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.36B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$4,819.11</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$4,769.75</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$5,619.09</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">40</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/28452/large/ARUsPeNQ_400x400.jpeg?1696527447" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Bittensor</div>
+                                        <div style="font-size: 0.75em; color: #555;">TAO</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$242.96</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.19%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-4.19%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-8.43%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.33B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$257.47</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$240.49</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$757.60</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">41</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/51281/large/GDN_USDG_Token_200x200.png?1730484111" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Global Dollar</div>
+                                        <div style="font-size: 0.75em; color: #555;">USDG</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9997</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+-0.0%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.01%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.03%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.27B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.0000</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9996</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.65</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">42</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/12171/large/polkadot.jpg?1766533446" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Polkadot</div>
+                                        <div style="font-size: 0.75em; color: #555;">DOT</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.28</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.07%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.67%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+2.7%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.15B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.34</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.27</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$54.98</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">43</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/30980/large/MNT_Token_Logo.png?1765516974" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Mantle</div>
+                                        <div style="font-size: 0.75em; color: #555;">MNT</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.6544</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.2%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-4.11%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.06%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.15B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.6862</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.6515</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$2.86</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">44</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Uniswap</div>
+                                        <div style="font-size: 0.75em; color: #555;">UNI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$3.31</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.25%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-4.22%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+7.38%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$2.10B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$3.48</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$3.28</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$44.92</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">45</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/54558/large/ff_200_X_200.png?1740741076" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Falcon USD</div>
+                                        <div style="font-size: 0.75em; color: #555;">USDF</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.9984</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.01%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.07%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.07%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.79B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.9998</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.9974</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$1.07</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">46</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/54342/large/pi_network.jpg?1739347576" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Pi Network</div>
+                                        <div style="font-size: 0.75em; color: #555;">PI</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.1747</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.76%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-5.69%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+4.57%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.78B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.1885</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.1710</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$2.99</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">48</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png?1696505053" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">OKB</div>
+                                        <div style="font-size: 0.75em; color: #555;">OKB</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$84.16</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.22%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.82%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.6%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.77B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$87.00</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$83.77</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$228.74</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">47</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/39925/large/sky.jpg?1724827980" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Sky</div>
+                                        <div style="font-size: 0.75em; color: #555;">SKY</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.0762</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.92%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.07%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.28%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.77B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.0784</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.0751</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$0.1005</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">49</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">NEAR Protocol</div>
+                                        <div style="font-size: 0.75em; color: #555;">NEAR</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$1.35</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.77%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-3.54%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.24%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.75B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$1.42</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$1.33</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$20.44</td>
+                        </tr>
+                        
+                        <tr style="border-bottom: 1px solid #1a1a1a;" onmouseover="this.style.background='#151515'" onmouseout="this.style.background='transparent'">
+                            <td style="padding: 12px 16px; color: #555;">50</td>
+                            <td style="padding: 12px 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png?1757326782" width="26" height="26" style="border-radius: 50%;" onerror="this.style.display='none'">
+                                    <div>
+                                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.92em;">Aster</div>
+                                        <div style="font-size: 0.75em; color: #555;">ASTER</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right; font-weight: 600; color: #e0e0e0;">$0.6701</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-0.12%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336; font-weight: 600;">-2.11%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50; font-weight: 600;">+0.91%</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #888;">$1.65B</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #4caf50;">$0.6942</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f44336;">$0.6634</td>
+                            <td style="padding: 12px 16px; text-align: right; color: #f7931a;">$2.41</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Trending -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">🔥 Trending Today</div>
+                <p style="color: #666; font-size: 0.8em; margin-bottom: 16px;">Most searched coins on CoinGecko in the last 24 hours</p>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">1</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/70544/large/coin.jpeg?1762452940" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">RaveDAO</div>
+                        <div style="font-size: 0.75em; color: #555;">RAVE · Rank #143</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">2</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/50333/large/IMG_0728.jpeg?1727384521" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Asteroid Shiba</div>
+                        <div style="font-size: 0.75em; color: #555;">ASTEROID · Rank #206</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">3</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Aave</div>
+                        <div style="font-size: 0.75em; color: #555;">AAVE · Rank #55</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">4</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/28206/large/ftxG9_TJ_400x400.jpeg?1696527208" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">LayerZero</div>
+                        <div style="font-size: 0.75em; color: #555;">ZRO · Rank #116</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">5</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Pudgy Penguins</div>
+                        <div style="font-size: 0.75em; color: #555;">PENGU · Rank #108</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">6</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Bitcoin</div>
+                        <div style="font-size: 0.75em; color: #555;">BTC · Rank #1</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">7</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/32440/large/pol.png?1759114181" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">POL (ex-MATIC)</div>
+                        <div style="font-size: 0.75em; color: #555;">POL · Rank #71</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">8</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/30162/large/ordi.png?1696529082" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">ORDI</div>
+                        <div style="font-size: 0.75em; color: #555;">ORDI · Rank #315</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">9</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Solana</div>
+                        <div style="font-size: 0.75em; color: #555;">SOL · Rank #7</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">10</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/71660/large/genius.png?1768804210" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Genius</div>
+                        <div style="font-size: 0.75em; color: #555;">GENIUS · Rank #165</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">11</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/26375/large/sui-ocean-square.png?1727791290" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Sui</div>
+                        <div style="font-size: 0.75em; color: #555;">SUI · Rank #30</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">12</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/34188/large/jup.png?1704266489" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Jupiter</div>
+                        <div style="font-size: 0.75em; color: #555;">JUP · Rank #88</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">13</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Ethereum</div>
+                        <div style="font-size: 0.75em; color: #555;">ETH · Rank #2</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">14</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">Hyperliquid</div>
+                        <div style="font-size: 0.75em; color: #555;">HYPE · Rank #13</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="font-size: 1.1em; font-weight: 800; color: #333; width: 24px;">15</div>
+                    <img src="https://coin-images.coingecko.com/coins/images/54326/large/Kernel_token_logo_2x.png?1739827205" width="32" height="32" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #e0e0e0; font-size: 0.9em;">KernelDAO</div>
+                        <div style="font-size: 0.75em; color: #555;">KERNEL · Rank #819</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.75em; color: #f7931a; font-weight: 600;">🔥 Trending</div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="ad-banner" style="height: 250px; margin: 0 0 20px;">AD</div>
+
+            <!-- Gainers -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">📈 Top Gainers (24h)</div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/69134/large/Rain_logo_1_.png?1762952191" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Rain</div>
+                            <div style="font-size: 0.75em; color: #555;">RAIN</div>
+                        </div>
+                    </div>
+                    <div style="color: #4caf50; font-weight: 700; font-size: 0.9em;">+2.74%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/69/large/monero_logo.png?1696501460" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Monero</div>
+                            <div style="font-size: 0.75em; color: #555;">XMR</div>
+                        </div>
+                    </div>
+                    <div style="color: #4caf50; font-weight: 700; font-size: 0.9em;">+2.36%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Figure Heloc</div>
+                            <div style="font-size: 0.75em; color: #555;">FIGR_HELOC</div>
+                        </div>
+                    </div>
+                    <div style="color: #4caf50; font-weight: 700; font-size: 0.9em;">+1.31%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/1094/large/photo_2026-04-13_09-59-16.png?1776048311" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">TRON</div>
+                            <div style="font-size: 0.75em; color: #555;">TRX</div>
+                        </div>
+                    </div>
+                    <div style="color: #4caf50; font-weight: 700; font-size: 0.9em;">+0.41%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/8418/large/leo-token.png?1696508607" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">LEO Token</div>
+                            <div style="font-size: 0.75em; color: #555;">LEO</div>
+                        </div>
+                    </div>
+                    <div style="color: #4caf50; font-weight: 700; font-size: 0.9em;">+0.07%</div>
+                </div>
+                
+            </div>
+
+            <!-- Losers -->
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">📉 Top Losers (24h)</div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/53247/large/square-bg-transparent.png?1752637478" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">MemeCore</div>
+                            <div style="font-size: 0.75em; color: #555;">M</div>
+                        </div>
+                    </div>
+                    <div style="color: #f44336; font-weight: 700; font-size: 0.9em;">-21.84%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/17980/large/photo_2024-09-10_17.09.00.jpeg?1725963446" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Toncoin</div>
+                            <div style="font-size: 0.75em; color: #555;">TON</div>
+                        </div>
+                    </div>
+                    <div style="color: #f44336; font-weight: 700; font-size: 0.9em;">-8.32%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/54342/large/pi_network.jpg?1739347576" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Pi Network</div>
+                            <div style="font-size: 0.75em; color: #555;">PI</div>
+                        </div>
+                    </div>
+                    <div style="color: #f44336; font-weight: 700; font-size: 0.9em;">-5.69%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/26375/large/sui-ocean-square.png?1727791290" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Sui</div>
+                            <div style="font-size: 0.75em; color: #555;">SUI</div>
+                        </div>
+                    </div>
+                    <div style="color: #f44336; font-weight: 700; font-size: 0.9em;">-5.14%</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <img src="https://coin-images.coingecko.com/coins/images/486/large/circle-zcash-color.png?1696501740" width="24" height="24" style="border-radius: 50%;" onerror="this.style.display='none'">
+                        <div>
+                            <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Zcash</div>
+                            <div style="font-size: 0.75em; color: #555;">ZEC</div>
+                        </div>
+                    </div>
+                    <div style="color: #f44336; font-weight: 700; font-size: 0.9em;">-5.0%</div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="ad-banner">ADVERTISEMENT</div>
+
+</div>
+
+<!-- Search Script -->
+<script>
+function filterTable() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.getElementById('coinTableBody').getElementsByTagName('tr');
+    for (let row of rows) {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(input) ? '' : 'none';
+    }
+}
+</script>
+
+<footer>
+    <p>© April 19, 2026 CryptoDaily. All rights reserved. Data provided for informational purposes only. Not financial advice.</p>
+    <p style="margin-top: 8px; color: #2a2a2a;">Data sourced from CoinGecko API.</p>
+</footer>
+
+<script>
+// Live date and time
+const now = new Date();
+document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
+
+// Live BTC price
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+  .then(r => r.json())
+  .then(data => {
+    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
+    const change = data.bitcoin.usd_24h_change.toFixed(2);
+    const arrow = change >= 0 ? '▲' : '▼';
+    const color = change >= 0 ? '#4caf50' : '#f44336';
+    document.getElementById('live-price').innerHTML =
+      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
+  })
+  .catch(() => {
+    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
+  });
+</script>
+
+</body>
+</html>

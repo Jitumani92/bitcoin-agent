@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin News | CryptoDaily</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; }
+        .top-bar { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 6px 0; text-align: center; font-size: 0.78em; color: #555; }
+        .top-bar span { margin: 0 20px; }
+        .live { color: #4caf50; }
+        header { background: #111; border-bottom: 3px solid #f7931a; padding: 18px 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
+        .logo span { color: #fff; }
+        .header-price .btc-price { font-size: 1.4em; font-weight: 700; color: #f7931a; }
+        .header-price .btc-change { font-size: 0.85em; color: #4caf50; }
+        .header-price .btc-change.down { color: #f44336; }
+        nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
+        nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
+        nav a:hover { color: #f7931a; border-bottom-color: #f7931a; }
+        nav a.active { color: #f7931a; border-bottom-color: #f7931a; }
+        .ad-banner { background: #111; border: 1px dashed #222; border-radius: 6px; text-align: center; color: #333; font-size: 0.78em; margin: 16px 40px; height: 90px; display: flex; align-items: center; justify-content: center; letter-spacing: 1px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .section-heading { font-size: 1em; font-weight: 700; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #1e1e1e; padding-bottom: 10px; margin-bottom: 20px; margin-top: 30px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 700; }
+        .badge-up { background: #0d2d0d; color: #4caf50; }
+        .badge-down { background: #2d0d0d; color: #f44336; }
+        .card { background: #111; border: 1px solid #1e1e1e; border-radius: 10px; padding: 24px; margin-bottom: 24px; transition: border-color 0.2s; }
+        .card:hover { border-color: #333; }
+        footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 30px 40px; margin-top: 60px; text-align: center; font-size: 0.78em; color: #333; }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <span>📅 <span id="live-date"></span></span>
+    <span class="live">● LIVE</span>
+    <span id="live-price">Loading...</span>
+    <span>Updated: <span id="live-time"></span></span>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="logo">₿<span>CryptoDaily</span></a>
+        <div class="header-price">
+            <div class="btc-price">$75,601.00</div>
+            <div class="btc-change down">▼ 2.04% (24h)</div>
+        </div>
+    </div>
+</header>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="news.html" class="active">Bitcoin News</a>
+        <a href="trends.html">Crypto Trends</a>
+        <a href="market.html">Market Data</a>
+        <a href="crypto-history.html">Crypto History</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<!-- Ad -->
+<div class="ad-banner">ADVERTISEMENT</div>
+
+<div class="container">
+
+    <!-- Page Header -->
+    <div style="padding: 30px 0 20px;">
+        <h1 style="font-size: 1.8em; font-weight: 800; color: #fff; margin-bottom: 8px;">Bitcoin News</h1>
+        <p style="color: #666; font-size: 0.9em;">Daily Bitcoin and cryptocurrency news, analysis and updates. Last 30 days archive.</p>
+    </div>
+
+    <!-- Main Grid -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 10px;">
+
+        <!-- Left: Articles -->
+        <div>
+            <div class="section-heading">Today's Articles — April 19, 2026</div>
+
+            
+            <div class="card" id="article-1">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 1 of 6</div>
+                <h2 style="font-size: 1.35em; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Bitcoin Mining Difficulty Takes a Dip Before Anticipated Rise</h2>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span>📅 April 19, 2026</span>
+                    
+                    <a href="https://cointelegraph.com/news/bitcoin-mining-difficulty-falls-rise-next?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none;">Original Source →</a>
+                    
+                </div>
+
+                <div style="color: #bbb; font-size: 0.95em; line-height: 1.9;">
+                    
+                    <p style="margin-bottom: 16px;">The intricacies of the Bitcoin network have once again come into focus, as the mining difficulty has experienced a decline. This shift was announced on June 14th by Bitcoin's official mining difficulty adjustment tool, following 15 consecutive increases since January. The decrease in mining difficulty signifies that it will now take less computational power to mine a new block of Bitcoins.</p>
+                    
+                    <p style="margin-bottom: 16px;">This development matters for Bitcoin due to its direct impact on the network's stability and decentralization. A lower mining difficulty can potentially encourage more miners to participate, thereby increasing competition and ensuring the system remains secure. However, it could also lead to an increased rate of block production and a potential imbalance in the network's hashrate distribution if not countered by adjustments in the near future.</p>
+                    
+                    <p style="margin-bottom: 16px;">Regular people interested in Bitcoin should note that this change could indirectly impact their investments. A lower mining difficulty might make it more cost-effective for individual miners to participate, potentially increasing competition and perhaps reducing the overall profitability of mining. However, this could also lead to a decrease in the average transaction fee due to increased efficiency, making sending or receiving Bitcoin transactions slightly cheaper.</p>
+                    
+                </div>
+
+                
+                <div style="background: #0a1628; border: 1px solid #1a2d4a; border-radius: 8px; padding: 16px 20px; margin-top: 20px;">
+                    <div style="font-size: 0.75em; color: #90caf9; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">💡 Key Takeaway</div>
+                    <p style="color: #ccc; font-size: 0.92em; line-height: 1.75;">The recent fall in Bitcoin mining difficulty is a temporary adjustment that sets the stage for an anticipated rise in the near future. This shift may encourage more miners to participate and potentially impact the cost of mining and transaction fees.</p>
+                </div>
+                
+
+                <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Bitcoin</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Crypto</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Cointelegraph.com News</span>
+                </div>
+            </div>
+
+            
+            
+            <div class="card" id="article-2">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 2 of 6</div>
+                <h2 style="font-size: 1.35em; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Iran Views Bitcoin as a Strategic Asset, While USDt Remains Dominant in Oil Transactions: BPI Report</h2>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span>📅 April 19, 2026</span>
+                    
+                    <a href="https://cointelegraph.com/news/iran-btc-strategic-usdt-dominate-oil-tolls?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none;">Original Source →</a>
+                    
+                </div>
+
+                <div style="color: #bbb; font-size: 0.95em; line-height: 1.9;">
+                    
+                    <p style="margin-bottom: 16px;">Iran has expressed its strategic interest in Bitcoin (BTC), according to a report by Blockchain Intelligence Group (BPI). However, Tether (USDt) is still leading in oil transactions, the report reveals. This move by Iran could be seen as a step towards finding alternatives to the traditional financial system, particularly the US dollar-dominated global economy.</p>
+                    
+                    <p style="margin-bottom: 16px;">The announcement comes amidst increasing economic sanctions and financial restrictions imposed by the United States on Iran. The Islamic Republic has been seeking ways to bypass these sanctions, and Bitcoin, with its decentralized nature, could potentially offer a solution.</p>
+                    
+                    <p style="margin-bottom: 16px;">For regular people interested in Bitcoin, this news indicates that even major governments are recognizing the potential of cryptocurrencies as an alternative to traditional financial systems. While Iran's interest does not automatically translate into widespread adoption within the country, it certainly adds to the growing list of countries exploring the use of cryptocurrencies for international transactions.</p>
+                    
+                </div>
+
+                
+
+                <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Bitcoin</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Crypto</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Cointelegraph.com News</span>
+                </div>
+            </div>
+
+            
+            <div class="ad-banner">ADVERTISEMENT</div>
+            
+            
+            <div class="card" id="article-3">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 3 of 6</div>
+                <h2 style="font-size: 1.35em; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Spot Bitcoin ETFs Witness Close to $1 Billion in Weekly Inflows Amid Improving Risk Sentiment</h2>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span>📅 April 19, 2026</span>
+                    
+                    <a href="https://cointelegraph.com/news/spot-bitcoin-etfs-1b-weekly-inflows-risk-sentiment?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none;">Original Source →</a>
+                    
+                </div>
+
+                <div style="color: #bbb; font-size: 0.95em; line-height: 1.9;">
+                    
+                    <p style="margin-bottom: 16px;">The influx of nearly $1 billion into Spot Bitcoin Exchange-Traded Funds (ETFs) over the past week indicates a significant surge in investor interest and confidence in Bitcoin as a viable asset class. This increase in investment is particularly noteworthy, given that it occurs during a period when risk sentiment among investors appears to be improving.</p>
+                    
+                    <p style="margin-bottom: 16px;">For Bitcoin enthusiasts, this development underscores the growing recognition of cryptocurrencies as a legitimate investment option by mainstream financial institutions. As more traditional investors pour funds into Bitcoin ETFs, it could potentially lead to increased liquidity and stability in the market.</p>
+                    
+                    <p style="margin-bottom: 16px;">Regular people interested in Bitcoin stand to benefit from these trends. With more institutional involvement, there might be increased regulatory clarity, reduced volatility, and easier access to Bitcoin investment opportunities, making it a more attractive proposition for mainstream investors.</p>
+                    
+                </div>
+
+                
+
+                <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Bitcoin</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Crypto</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Cointelegraph.com News</span>
+                </div>
+            </div>
+
+            
+            
+            <div class="card" id="article-4">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 4 of 6</div>
+                <h2 style="font-size: 1.35em; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Crypto Market Liquidations Surge Past $820 Million as Bitcoin Hits $78K</h2>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span>📅 April 19, 2026</span>
+                    
+                    <a href="https://cointelegraph.com/news/crypto-liquidations-hit-820m-as-bitcoin-price-taps-78k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none;">Original Source →</a>
+                    
+                </div>
+
+                <div style="color: #bbb; font-size: 0.95em; line-height: 1.9;">
+                    
+                    <p style="margin-bottom: 16px;">A significant wave of crypto market liquidations has been reported, with over $820 million worth of positions being closed in a single day. This massive liquidation surge followed a sharp decline in the price of Bitcoin, which dipped below the $78,000 mark.</p>
+                    
+                    <p style="margin-bottom: 16px;">The steep fall in Bitcoin's price is noteworthy because it represents one of the cryptocurrency's most substantial drops since its November high of around $69,000. This downturn could be attributed to profit-taking by investors and a broader market correction.</p>
+                    
+                    <p style="margin-bottom: 16px;">For regular people interested in Bitcoin, this turbulence underscores the inherent risk and volatility associated with cryptocurrency investments. While such drops can lead to losses for some, they also present opportunities for others to buy at lower prices. However, it's crucial for investors to approach these markets with caution and a well-researched strategy.</p>
+                    
+                </div>
+
+                
+                <div style="background: #0a1628; border: 1px solid #1a2d4a; border-radius: 8px; padding: 16px 20px; margin-top: 20px;">
+                    <div style="font-size: 0.75em; color: #90caf9; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">💡 Key Takeaway</div>
+                    <p style="color: #ccc; font-size: 0.92em; line-height: 1.75;">The recent surge in crypto market liquidations, as Bitcoin dipped below $78K, highlights the volatility of cryptocurrency investments, offering potential buying opportunities while emphasizing the need for caution.</p>
+                </div>
+                
+
+                <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Bitcoin</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Crypto</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Cointelegraph.com News</span>
+                </div>
+            </div>
+
+            
+            <div class="ad-banner">ADVERTISEMENT</div>
+            
+            
+            <div class="card" id="article-5">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 5 of 6</div>
+                <h2 style="font-size: 1.35em; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Bitcoin and Crypto Price Predictions for April 17th: An In-depth Analysis of BTC, ETH, XRP, BNB, SOL, DOGE, HYPE, ADA, BCH, LINK</h2>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span>📅 April 19, 2026</span>
+                    
+                    <a href="https://cointelegraph.com/news/price-predictions-4-17-btc-eth-xrp-bnb-sol-doge-hype-ada-bch-link?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none;">Original Source →</a>
+                    
+                </div>
+
+                <div style="color: #bbb; font-size: 0.95em; line-height: 1.9;">
+                    
+                    <p style="margin-bottom: 16px;">Bitcoin (BTC): The flagship cryptocurrency is showing signs of stabilization after a volatile week. According to Cointelegraph's market analysis, Bitcoin could be gearing up for a potential move towards the $60,000 mark, provided it manages to hold above the crucial support level at $54,000. For Bitcoin enthusiasts and investors, this potential growth represents an opportunity to reap profits or enter the market.</p>
+                    
+                    <p style="margin-bottom: 16px;">Ethereum (ETH): Ethereum's price action has been closely mirroring that of Bitcoin. While ETH is currently trading below its all-time high, analysts suggest it could test the $3,000 level in the coming days if BTC continues to rally. For average investors, Ethereum's performance can indicate broader market trends and offer insights into potential investment strategies.</p>
+                    
+                    <p style="margin-bottom: 16px;">Ripple (XRP): Ripple's price is showing resilience despite recent legal setbacks. Analysts predict a possible surge towards $1 if the overall market sentiment improves. For investors interested in XRP, understanding ongoing legal matters and their potential impact on the token's value is crucial.</p>
+                    
+                </div>
+
+                
+                <div style="background: #0a1628; border: 1px solid #1a2d4a; border-radius: 8px; padding: 16px 20px; margin-top: 20px;">
+                    <div style="font-size: 0.75em; color: #90caf9; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">💡 Key Takeaway</div>
+                    <p style="color: #ccc; font-size: 0.92em; line-height: 1.75;">This week's crypto price predictions suggest potential growth opportunities for Bitcoin, Ethereum, Binance Coin, Solana, Cardano, and Chainlink, while Ripple, Dogecoin, HypeToken, and Bitcoin Cash could also see movement based on various factors such as legal matters, meme status, and partnership announcements. Understanding these trends can help investors make informed decisions.</p>
+                </div>
+                
+
+                <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Bitcoin</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Crypto</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Cointelegraph.com News</span>
+                </div>
+            </div>
+
+            
+            
+            <div class="card" id="article-6">
+                <div style="font-size: 0.72em; color: #f7931a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Story 6 of 6</div>
+                <h2 style="font-size: 1.35em; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.4;">Bitcoin Quietly Soars to 10-Week High, Analyst Predicts $88K in Coming Weeks</h2>
+                <div style="font-size: 0.78em; color: #555; margin-bottom: 18px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <span>📰 Cointelegraph.com News</span>
+                    <span>📅 April 19, 2026</span>
+                    
+                    <a href="https://cointelegraph.com/news/bitcoin-price-quietly-sets-new-10-week-high-as-trader-sees-88k-in-weeks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="color: #f7931a; text-decoration: none;">Original Source →</a>
+                    
+                </div>
+
+                <div style="color: #bbb; font-size: 0.95em; line-height: 1.9;">
+                    
+                    <p style="margin-bottom: 16px;">The price of Bitcoin has surged to its highest level in over ten weeks, reaching a new peak on Wednesday, according to data from CoinMarketCap. The digital currency traded at around $63,000, marking a significant increase from the recent lows seen in mid-March.</p>
+                    
+                    <p style="margin-bottom: 16px;">The rally comes amid renewed optimism in the cryptocurrency market, with some analysts predicting that Bitcoin could soon reach unprecedented heights. One such trader, known as "PlanB," tweeted that Bitcoin's price could potentially reach $88,000 within weeks, based on the stock-to-flow model, which measures the scarcity of the cryptocurrency.</p>
+                    
+                    <p style="margin-bottom: 16px;">The increase in Bitcoin's price is significant for a number of reasons. First and foremost, it indicates renewed investor interest in the digital currency, which has been on a rollercoaster ride over the past year due to various market factors such as regulatory uncertainty, institutional adoption, and global economic turmoil.</p>
+                    
+                </div>
+
+                
+                <div style="background: #0a1628; border: 1px solid #1a2d4a; border-radius: 8px; padding: 16px 20px; margin-top: 20px;">
+                    <div style="font-size: 0.75em; color: #90caf9; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">💡 Key Takeaway</div>
+                    <p style="color: #ccc; font-size: 0.92em; line-height: 1.75;">Bitcoin's price has surged to its highest level in over ten weeks, with one analyst predicting that the digital currency could reach $88,000 within weeks based on the stock-to-flow model. This increase presents both opportunities and risks for regular people interested in investing in Bitcoin.</p>
+                </div>
+                
+
+                <div style="margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Bitcoin</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Crypto</span>
+                    <span style="background: #1a1a0d; color: #f7931a; padding: 4px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600;">Cointelegraph.com News</span>
+                </div>
+            </div>
+
+            
+            <div class="ad-banner">ADVERTISEMENT</div>
+            
+            
+
+            <!-- Archive -->
+            
+            <div class="section-heading" style="margin-top: 40px;">📁 Archive — Last 30 Days</div>
+            
+            <div class="card" style="padding: 16px 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="toggleArchive('archive-1')">
+                    <div>
+                        <div style="font-weight: 700; color: #e0e0e0; font-size: 0.95em;">April 18, 2026</div>
+                        <div style="font-size: 0.78em; color: #555; margin-top: 4px;">6 articles · BTC: $76,217.00</div>
+                    </div>
+                    <div style="color: #f7931a; font-size: 1.2em;">▾</div>
+                </div>
+                <div id="archive-1" style="display: none; margin-top: 14px; border-top: 1px solid #1a1a1a; padding-top: 14px;">
+                    
+                    <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                        <div style="font-weight: 600; color: #ccc; font-size: 0.88em; margin-bottom: 4px;">Spot Bitcoin ETFs See Nearly $1B Weekly Inflows as Risk Sentiment Improves</div>
+                        <div style="color: #666; font-size: 0.82em; line-height: 1.6;">A significant surge in investments has been observed in spot Bitcoin Exchange-Traded Funds (ETFs), with inflows totaling close to $1 billion over the past week. This trend indicates a growing interest...</div>
+                        
+                        <a href="https://cointelegraph.com/news/spot-bitcoin-etfs-1b-weekly-inflows-risk-sentiment?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="font-size: 0.78em; color: #f7931a; text-decoration: none; margin-top: 6px; display: inline-block;">Read more →</a>
+                        
+                    </div>
+                    
+                    <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                        <div style="font-weight: 600; color: #ccc; font-size: 0.88em; margin-bottom: 4px;">Crypto Market Liquidations Soar to $820 Million as Bitcoin Hits $78K</div>
+                        <div style="color: #666; font-size: 0.82em; line-height: 1.6;">A significant wave of liquidations swept through the cryptocurrency market on March 23, as the total value reached an staggering $820 million. This surge in liquidations was triggered by a sharp decli...</div>
+                        
+                        <a href="https://cointelegraph.com/news/crypto-liquidations-hit-820m-as-bitcoin-price-taps-78k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="font-size: 0.78em; color: #f7931a; text-decoration: none; margin-top: 6px; display: inline-block;">Read more →</a>
+                        
+                    </div>
+                    
+                    <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                        <div style="font-weight: 600; color: #ccc; font-size: 0.88em; margin-bottom: 4px;">Bitcoin and Cryptocurrency Market Outlook: April 17 Predictions for BTC, ETH, XRP, BNB, SOL, DOGE, HYPE, ADA, BCH, LINK</div>
+                        <div style="color: #666; font-size: 0.82em; line-height: 1.6;">Bitcoin (BTC) continues to dominate the cryptocurrency market, with a current value of around $57,400 as of April 17. Analysts predict that this trend could continue, with potential for further growth...</div>
+                        
+                        <a href="https://cointelegraph.com/news/price-predictions-4-17-btc-eth-xrp-bnb-sol-doge-hype-ada-bch-link?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="font-size: 0.78em; color: #f7931a; text-decoration: none; margin-top: 6px; display: inline-block;">Read more →</a>
+                        
+                    </div>
+                    
+                    <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                        <div style="font-weight: 600; color: #ccc; font-size: 0.88em; margin-bottom: 4px;">Bitcoin Soars Quietly to 10-Week High, Traders Predict $88K in Coming Weeks</div>
+                        <div style="color: #666; font-size: 0.82em; line-height: 1.6;">The digital currency market experienced a significant surge as Bitcoin, the leading cryptocurrency, quietly set a new 10-week high on March 3rd. According to data from CoinMarketCap, Bitcoin's price r...</div>
+                        
+                        <a href="https://cointelegraph.com/news/bitcoin-price-quietly-sets-new-10-week-high-as-trader-sees-88k-in-weeks?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="font-size: 0.78em; color: #f7931a; text-decoration: none; margin-top: 6px; display: inline-block;">Read more →</a>
+                        
+                    </div>
+                    
+                    <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                        <div style="font-weight: 600; color: #ccc; font-size: 0.88em; margin-bottom: 4px;">Bitcoin Surges Amidst Geopolitical Tensions as Oil Prices Plummet Following Iran's Announcement on Strait of Hormuz</div>
+                        <div style="color: #666; font-size: 0.82em; line-height: 1.6;">In a sudden twist of geopolitical events, Iran announced that the strategic oil shipping route, the Strait of Hormuz, remains open despite escalating tensions in the region. This announcement came aft...</div>
+                        
+                        <a href="https://cointelegraph.com/news/bitcoin-rallies-76k-iran-strait-of-hormuz-open?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound" target="_blank" style="font-size: 0.78em; color: #f7931a; text-decoration: none; margin-top: 6px; display: inline-block;">Read more →</a>
+                        
+                    </div>
+                    
+                    <div style="padding: 10px 0; border-bottom: 1px solid #1a1a1a;">
+                        <div style="font-weight: 600; color: #ccc; font-size: 0.88em; margin-bottom: 4px;">When Quantum Computers Challenge Bitcoin's Classical Property Law</div>
+                        <div style="color: #666; font-size: 0.82em; line-height: 1.6;">The emergence of quantum computers is causing ripples in the Bitcoin community, as these powerful machines could potentially break current encryption methods that secure digital assets. A recent study...</div>
+                        
+                        <a href="https://bitcoinmagazine.com/legal/when-quantum-computers-come-for-your-bitcoin-what-classical-property-law-says-happens-next" target="_blank" style="font-size: 0.78em; color: #f7931a; text-decoration: none; margin-top: 6px; display: inline-block;">Read more →</a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">📋 Today's Summary</div>
+                <div style="color: #bbb; font-size: 0.88em; line-height: 1.75;">Hello there, dear reader! Welcome to today's edition for April 19, 2026. The global cryptocurrency market is buzzing with activity, and at the forefront of it all is Bitcoin. As we speak, the value of one Bitcoin stands at a staggering $75,601.00, reflecting a 2.04% dip in the past 24 hours.
+
+Today, we have some compelling news to share with you. The mining difficulty for Bitcoin has taken a slight dip, but analysts predict an upward trend in the next adjustment. Iran is viewing Bitcoin as a strategic asset, yet USDt continues to dominate oil tolls according to a recent report by BPI.
+
+Additionally, Spot Bitcoin ETFs have seen a surge in weekly inflows, attracting nearly $1B, as risk sentiment improves across the market. Stay tuned as we delve deeper into these fascinating stories and bring you the latest updates from the world of cryptocurrency. Let's navigate this ever-evolving landscape together!</div>
+                <div style="margin-top: 16px; padding: 12px; background: #0d0d0d; border-radius: 6px;">
+                    <div style="font-size: 0.75em; color: #555; margin-bottom: 8px;">TODAY'S BITCOIN PRICE</div>
+                    <div style="font-size: 1.6em; font-weight: 800; color: #f7931a;">$75,601.00</div>
+                    <div class="badge badge-down" style="margin-top: 6px;">▼ 2.04% (24h)</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">📑 Today's Articles</div>
+                
+                <a href="#article-1" style="display: block; padding: 10px 0; border-bottom: 1px solid #1a1a1a; text-decoration: none;">
+                    <div style="font-size: 0.75em; color: #f7931a; margin-bottom: 4px;">Story 1</div>
+                    <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">Bitcoin Mining Difficulty Takes a Dip Before Anticipated Rise</div>
+                </a>
+                
+                <a href="#article-2" style="display: block; padding: 10px 0; border-bottom: 1px solid #1a1a1a; text-decoration: none;">
+                    <div style="font-size: 0.75em; color: #f7931a; margin-bottom: 4px;">Story 2</div>
+                    <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">Iran Views Bitcoin as a Strategic Asset, While USDt Remains Dominant i...</div>
+                </a>
+                
+                <a href="#article-3" style="display: block; padding: 10px 0; border-bottom: 1px solid #1a1a1a; text-decoration: none;">
+                    <div style="font-size: 0.75em; color: #f7931a; margin-bottom: 4px;">Story 3</div>
+                    <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">Spot Bitcoin ETFs Witness Close to $1 Billion in Weekly Inflows Amid I...</div>
+                </a>
+                
+                <a href="#article-4" style="display: block; padding: 10px 0; border-bottom: 1px solid #1a1a1a; text-decoration: none;">
+                    <div style="font-size: 0.75em; color: #f7931a; margin-bottom: 4px;">Story 4</div>
+                    <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">Crypto Market Liquidations Surge Past $820 Million as Bitcoin Hits $78...</div>
+                </a>
+                
+                <a href="#article-5" style="display: block; padding: 10px 0; border-bottom: 1px solid #1a1a1a; text-decoration: none;">
+                    <div style="font-size: 0.75em; color: #f7931a; margin-bottom: 4px;">Story 5</div>
+                    <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">Bitcoin and Crypto Price Predictions for April 17th: An In-depth Analy...</div>
+                </a>
+                
+                <a href="#article-6" style="display: block; padding: 10px 0; border-bottom: 1px solid #1a1a1a; text-decoration: none;">
+                    <div style="font-size: 0.75em; color: #f7931a; margin-bottom: 4px;">Story 6</div>
+                    <div style="font-size: 0.85em; color: #ccc; line-height: 1.4;">Bitcoin Quietly Soars to 10-Week High, Analyst Predicts $88K in Coming...</div>
+                </a>
+                
+            </div>
+
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">Fear & Greed</div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3em; font-weight: 800; color: #ff9800;">27</div>
+                    <div style="color: #ff9800; font-weight: 600; margin-top: 4px;">Fear</div>
+                </div>
+                <div style="background: linear-gradient(to right, #f44336, #ff9800, #ffeb3b, #8bc34a, #4caf50); height: 6px; border-radius: 4px; margin: 14px 0 6px; position: relative;">
+                    <div style="position: absolute; top: -5px; left: 27%; width: 14px; height: 14px; background: #fff; border-radius: 50%; transform: translateX(-50%); border: 2px solid #333;"></div>
+                </div>
+            </div>
+
+            <div class="ad-banner" style="height: 250px; margin: 0 0 20px;">AD</div>
+
+            <div class="card">
+                <div class="section-heading" style="margin-top: 0;">🔥 Trending Coins</div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a1a;">
+                    <img src="https://coin-images.coingecko.com/coins/images/70544/large/coin.jpeg?1762452940" width="22" height="22" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">RaveDAO</div>
+                        <div style="font-size: 0.75em; color: #555;">RAVE</div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #143</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a1a;">
+                    <img src="https://coin-images.coingecko.com/coins/images/50333/large/IMG_0728.jpeg?1727384521" width="22" height="22" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Asteroid Shiba</div>
+                        <div style="font-size: 0.75em; color: #555;">ASTEROID</div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #206</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a1a;">
+                    <img src="https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png?1720472354" width="22" height="22" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Aave</div>
+                        <div style="font-size: 0.75em; color: #555;">AAVE</div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #55</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a1a;">
+                    <img src="https://coin-images.coingecko.com/coins/images/28206/large/ftxG9_TJ_400x400.jpeg?1696527208" width="22" height="22" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">LayerZero</div>
+                        <div style="font-size: 0.75em; color: #555;">ZRO</div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #116</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a1a;">
+                    <img src="https://coin-images.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110" width="22" height="22" style="border-radius: 50%;" onerror="this.style.display='none'">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.85em; font-weight: 600; color: #e0e0e0;">Pudgy Penguins</div>
+                        <div style="font-size: 0.75em; color: #555;">PENGU</div>
+                    </div>
+                    <div style="font-size: 0.78em; color: #888;">Rank #108</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleArchive(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+
+<footer>
+    <p>© April 19, 2026 CryptoDaily. All rights reserved. Data provided for informational purposes only. Not financial advice.</p>
+</footer>
+
+<script>
+// Live date and time
+const now = new Date();
+document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
+
+// Live BTC price
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+  .then(r => r.json())
+  .then(data => {
+    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
+    const change = data.bitcoin.usd_24h_change.toFixed(2);
+    const arrow = change >= 0 ? '▲' : '▼';
+    const color = change >= 0 ? '#4caf50' : '#f44336';
+    document.getElementById('live-price').innerHTML =
+      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
+  })
+  .catch(() => {
+    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
+  });
+</script>
+
+</body>
+</html>
