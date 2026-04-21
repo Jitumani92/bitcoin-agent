@@ -1,17 +1,19 @@
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
+
 import json
 import glob
 from jinja2 import Environment, FileSystemLoader
 from fetch_news import fetch_price
 from fetch_market import fetch_fear_greed, fetch_trending, get_fear_greed_color
-from build_page import parse_article, parse_market_section
+from build_page import parse_article, parse_market_section, strip_html
 from datetime import datetime
 
 
 def load_archive():
-    archive = []
+    archive      = []
     backup_files = sorted(glob.glob("backups/*.json"), reverse=True)
+
     for filepath in backup_files[1:31]:
         try:
             with open(filepath, "r", encoding="utf-8") as f:
@@ -24,7 +26,8 @@ def load_archive():
                 "articles":      articles
             })
         except Exception as e:
-            print(f"   Warning: could not load {filepath}: {e}")
+            print(f"Warning: could not load {filepath}: {e}")
+
     return archive
 
 
@@ -35,7 +38,7 @@ def build_news(today_articles, price_data, intro):
     trending   = fetch_trending()
     archive    = load_archive()
 
-    change_class = "up" if "▲" in price_data["change"] else "down"
+    change_class = "up" if "UP" in price_data["change"] or "▲" in price_data["change"] else "down"
 
     env      = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("news_template.html")
@@ -46,7 +49,7 @@ def build_news(today_articles, price_data, intro):
         price            = price_data["price"],
         change           = price_data["change"],
         change_class     = change_class,
-        intro            = intro,
+        intro            = strip_html(intro),
         today_articles   = today_articles,
         archive          = archive,
         fear_greed       = fear_greed,
@@ -57,7 +60,7 @@ def build_news(today_articles, price_data, intro):
     with open("news.html", "w", encoding="utf-8") as f:
         f.write(html)
 
-    print("✅ news.html built!")
+    print("OK news.html built!")
 
 
 if __name__ == "__main__":
@@ -71,7 +74,8 @@ if __name__ == "__main__":
         content = json.load(f)
 
     articles   = [parse_article(a) for a in content["articles"]]
+    intro      = strip_html(content.get("intro", ""))
     price_data = fetch_price()
 
-    build_news(articles, price_data, content.get("intro", ""))
-    print("\n🌐 Open news.html to see the news page!")
+    build_news(articles, price_data, intro)
+    print("Open news.html in your browser!")

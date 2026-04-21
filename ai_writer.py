@@ -6,31 +6,24 @@ from datetime import datetime
 # ── Write full detailed daily Bitcoin content ─────────────────────────────────
 
 def write_full_article(article):
-    prompt = f"""
-You are a professional Bitcoin news journalist.
-
-Write a detailed, informative news article based on this headline and summary:
+    prompt = f"""Write a detailed news article about this Bitcoin story.
 
 Title: {article['title']}
 Summary: {article['summary']}
-Source: {article['source']}
 
-Write the article in this exact format:
+Write exactly in this format:
 
-ARTICLE_TITLE: (write an engaging title here)
+ARTICLE_TITLE: {article['title']}
 
 ARTICLE_BODY:
-(Write 3 detailed paragraphs about this news story. Each paragraph should be
-4-5 sentences long. Explain what happened, why it matters for Bitcoin, and
-what it means for regular people interested in Bitcoin. Use simple, clear
-language. Do not use hashtags, emojis, or markdown formatting.)
+Write 3 paragraphs here. Each paragraph should be 3-4 sentences long explaining what happened, why it matters for Bitcoin, and what it means for investors. Use simple clear language.
 
 KEY_TAKEAWAY:
-(Write one single sentence summarising the most important point of this story.)
+Write one sentence summarizing the most important point.
 """
 
     response = ollama.chat(
-        model="tinyllama",
+        model="mistral",
         messages=[{"role": "user", "content": prompt}]
     )
     return response["message"]["content"].strip()
@@ -39,28 +32,25 @@ KEY_TAKEAWAY:
 def write_market_mood(articles, price_data):
     headlines = "\n".join([f"- {a['title']}" for a in articles])
 
-    prompt = f"""
-You are a Bitcoin market analyst.
+    prompt = f"""Analyze today's Bitcoin market.
 
-Today's Bitcoin price: {price_data['price']}
-24 hour change: {price_data['change']}
+Bitcoin price: {price_data['price']}
+Change: {price_data['change']}
 
-Today's headlines:
+Headlines:
 {headlines}
 
-Write two sections:
+Write exactly in this format:
 
 MARKET_MOOD:
-(In 3-4 sentences, describe whether today's market is bullish or bearish 
-and the main reasons why. Be specific and informative.)
+Write 2-3 sentences about whether market is bullish or bearish and why.
 
 WATCH_TOMORROW:
-(In 2-3 sentences, tell readers what key events, price levels, or news 
-stories to watch out for tomorrow. Be specific.)
+Write 1-2 sentences about what to watch tomorrow.
 """
 
     response = ollama.chat(
-        model="tinyllama",
+        model="mistral",
         messages=[{"role": "user", "content": prompt}]
     )
     return response["message"]["content"].strip()
@@ -69,25 +59,19 @@ stories to watch out for tomorrow. Be specific.)
 def write_daily_intro(articles, price_data):
     headlines = "\n".join([f"- {a['title']}" for a in articles[:3]])
 
-    prompt = f"""
-You are a friendly Bitcoin news editor writing the opening of a daily news page.
+    prompt = f"""Write a short friendly introduction for a Bitcoin news page.
 
-Today's date: {datetime.today().strftime('%B %d, %Y')}
+Date: {datetime.today().strftime('%B %d, %Y')}
 Bitcoin price: {price_data['price']} ({price_data['change']})
 
-Top headlines today:
+Today's top stories:
 {headlines}
 
-Write a welcoming intro paragraph (4-5 sentences) that:
-- Greets the reader and mentions today's date
-- Mentions the current Bitcoin price naturally
-- Teases the biggest stories of the day
-- Sets an informative, friendly tone
-- Plain text only, no hashtags or emojis
+Write 3-4 sentences welcoming readers, mentioning the Bitcoin price, and teasing today's top stories. Plain text only.
 """
 
     response = ollama.chat(
-        model="tinyllama",
+        model="mistral",
         messages=[{"role": "user", "content": prompt}]
     )
     return response["message"]["content"].strip()

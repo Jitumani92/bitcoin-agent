@@ -15,8 +15,7 @@
         .logo { font-size: 2em; font-weight: 800; color: #f7931a; text-decoration: none; }
         .logo span { color: #fff; }
         .header-price .btc-price { font-size: 1.4em; font-weight: 700; color: #f7931a; }
-        .header-price .btc-change { font-size: 0.85em; color: #4caf50; }
-        .header-price .btc-change.down { color: #f44336; }
+        .header-price .btc-change { font-size: 0.85em; }
         nav { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; position: sticky; top: 0; z-index: 100; }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 4px; }
         nav a { color: #888; text-decoration: none; padding: 14px 18px; font-size: 0.88em; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 3px solid transparent; transition: all 0.2s; display: inline-block; }
@@ -33,8 +32,6 @@
         footer { background: #050505; border-top: 1px solid #1a1a1a; padding: 40px; margin-top: 60px; }
     </style>
 </head>
-
-
 <body>
 
 <!-- Top Bar -->
@@ -68,32 +65,27 @@
     </div>
 </nav>
 
-<!-- Ad -->
 <div class="ad-banner">ADVERTISEMENT</div>
 
 <!-- Hero Stats -->
 <div style="background: #111; border-bottom: 1px solid #1e1e1e; padding: 30px 0;">
     <div class="container">
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
-
             <div class="card" style="border-left: 4px solid #f7931a; margin-bottom: 0;">
                 <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Bitcoin Price</div>
                 <div style="font-size: 1.9em; font-weight: 800; color: #f7931a;">{{ price }}</div>
                 <div class="badge {{ 'badge-up' if change_class == 'up' else 'badge-down' }}" style="margin-top: 8px;">{{ change }}</div>
             </div>
-
             <div class="card" style="border-left: 4px solid #9c27b0; margin-bottom: 0;">
                 <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Total Market Cap</div>
                 <div style="font-size: 1.5em; font-weight: 800; color: #ce93d8;">{{ overview.total_mcap_fmt }}</div>
                 <div class="badge {{ 'badge-up' if overview.mcap_change_24h >= 0 else 'badge-down' }}" style="margin-top: 8px;">{{ overview.mcap_change_24h }}% (24h)</div>
             </div>
-
             <div class="card" style="border-left: 4px solid #2196f3; margin-bottom: 0;">
                 <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">BTC Dominance</div>
                 <div style="font-size: 1.9em; font-weight: 800; color: #90caf9;">{{ overview.btc_dominance }}%</div>
                 <div style="font-size: 0.8em; color: #555; margin-top: 8px;">ETH: {{ overview.eth_dominance }}%</div>
             </div>
-
             <div class="card" style="border-left: 4px solid {{ fear_greed_color }}; margin-bottom: 0;">
                 <div style="font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Fear & Greed</div>
                 <div style="font-size: 1.9em; font-weight: 800; color: {{ fear_greed_color }};">{{ fear_greed.value }}</div>
@@ -292,27 +284,8 @@
         <span>Data provided for informational purposes only. Not financial advice.</span>
     </div>
 </footer>
-<script>
-// Live date and time
-const now = new Date();
-document.getElementById('live-date').textContent = now.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
-document.getElementById('live-time').textContent = now.toUTCString().slice(17,22) + ' UTC';
 
-// Live BTC price
-fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
-  .then(r => r.json())
-  .then(data => {
-    const price = '$' + data.bitcoin.usd.toLocaleString('en-US');
-    const change = data.bitcoin.usd_24h_change.toFixed(2);
-    const arrow = change >= 0 ? '▲' : '▼';
-    const color = change >= 0 ? '#4caf50' : '#f44336';
-    document.getElementById('live-price').innerHTML =
-      `BTC: <strong style="color:#f7931a">${price}</strong> <span style="color:${color}">${arrow} ${Math.abs(change)}%</span>`;
-  })
-  .catch(() => {
-    document.getElementById('live-price').textContent = 'BTC: Price unavailable';
-  });
-</script>
 <script src="assets/live.js"></script>
+
 </body>
 </html>
