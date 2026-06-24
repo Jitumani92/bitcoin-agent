@@ -1,0 +1,69 @@
+{
+  "date": "June 24, 2026",
+  "price": "$62,557.00",
+  "change": "DOWN 2.28% (24h)",
+  "intro": "Welcome to our daily Bitcoin news update for June 24, 2026! Today, the Bitcoin price stands at $62,557.00 (DOWN 2.28% in the last 24 hours). We're excited to share with you some intriguing developments from the cryptosphere. Today's top stories include a drop in multi-year Bitcoin holder selling to a 19-month low, CBOE considering a conversion of BTC and ETH continuous futures into perpetual futures, and speculations about Bitcoin teasing a $62K breakdown alongside an analysis on Micron earnings volatility. Let's dive in!",
+  "market_section": "MARKET_MOOD: The Bitcoin market appears to be experiencing a minor correction, with the price dropping by 2.28% over the last 24 hours. The reduced selling from multi-year holders and a high funding rate suggest that long-term investors remain optimistic, but short-term volatility may persist as indicated by reports of earnings volatility and tech sell-offs in Asia.\n\nWATCH_TOMORROW: Tomorrow, it would be interesting to monitor Bitcoin's reaction to the potential volatility from Micron earnings and further developments regarding the possible conversion of CBOE's BTC and ETH continuous futures into perpetual futures.",
+  "articles": [
+    {
+      "written": "ARTICLE_TITLE: Multi-year Bitcoin holder selling falls to 19-month low as halving model flags new market bottom date\n\nARTICLE_BODY:\n\n1. OG Bitcoin holders, individuals who have owned the cryptocurrency for multiple years, have significantly reduced their selling activity in the past few weeks, according to data from Glassnode. This marks a 19-month low in spending, indicating a shift in behavior among long-term investors.\n\n2. The decline in sales by these seasoned Bitcoin holders is significant because they are often seen as price stabilizers in the volatile cryptocurrency market. Their decision to withhold selling could potentially signal a strengthening market sentiment and a reduced supply of Bitcoin for sale, which could positively impact the overall price trend.\n\n3. Meanwhile, the stock-to-flow (S2F) model, a popular Bitcoin market cycle indicator developed by Plan B, predicts that September 2021 could be a potential bottom point for the current market cycle. This model takes into account the supply and demand dynamics of Bitcoin to forecast price movements. If correct, this could indicate a bullish outlook for Bitcoin prices in the coming months.\n\nKEY_TAKEAWAY:\nLong-term Bitcoin holders are holding onto their assets more tightly, and a popular market cycle indicator suggests that September 2021 could mark a new market bottom, potentially signaling a bullish future for Bitcoin prices.",
+      "original": {
+        "title": "Multi-year Bitcoin holder selling falls to 19-month low as halving model flags new market bottom date",
+        "summary": "OG Bitcoin holders' spending dropped to a 19-month low, as market cycle indicators point to September as a potential market bottom.",
+        "link": "https://cointelegraph.com/markets/og-bitcoin-selling-hits-19-month-low-as-halving-model-flags-new-bottom-date-analyst?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+        "source": "Cointelegraph.com News",
+        "date": "Tue, 23 Jun 2026 19:09:26 GMT"
+      }
+    },
+    {
+      "written": "ARTICLE_TITLE: CBOE weighs converting BTC, ETH continuous futures into perpetual futures: Report\n\nARTICLE_BODY:\n\nIn a potential shakeup for the cryptocurrency market, global markets trading firm CBOE Global Markets Inc. is reportedly considering transforming its Bitcoin (BTC) and Ethereum (ETH) continuous futures into perpetual contracts. This move comes as regulatory changes in the US accelerate the adoption of crypto perpetual futures, with rivals Coinbase and Kalshi expanding their offerings in this area.\n\nThe shift to perpetual futures could significantly impact Bitcoin by offering more flexible trading options for investors. Unlike traditional futures contracts, which expire on a specific date, perpetual futures do not have an expiration date, allowing for uninterrupted trading and potential increased liquidity. This change could attract a broader range of participants to the market, potentially boosting Bitcoin's price volatility and overall adoption.\n\nFor investors, the potential conversion to perpetual futures could provide more opportunities to hedge their crypto portfolios or speculate on price movements, as these contracts allow for long and short positions. However, it's essential to note that such products come with higher leverage risks, and investors should be cautious when engaging in these trades.\n\nKEY_TAKEAWAY: CBOE's potential shift towards perpetual futures for Bitcoin and Ethereum could open up new trading opportunities for investors while potentially boosting the cryptocurrency market's liquidity and volatility. However, increased leverage risks are a concern that investors should be aware of.",
+      "original": {
+        "title": "CBOE weighs converting BTC, ETH continuous futures into perpetual futures: Report",
+        "summary": "As US regulatory changes accelerate the adoption of crypto perpetual futures and rivals Coinbase and Kalshi expand their offerings, Cboe mulls a product overhaul.",
+        "link": "https://cointelegraph.com/news/cboe-bitcoin-ether-perpetual-futures-cftc-kalshi?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+        "source": "Cointelegraph.com News",
+        "date": "Tue, 23 Jun 2026 16:23:56 GMT"
+      }
+    },
+    {
+      "written": "ARTICLE_TITLE: Bitcoin teases $62K breakdown as analysis sees Micron earnings volatility next\n\nARTICLE_BODY:\nBitcoin, the world's largest cryptocurrency by market capitalization, continued its volatile run this week, with bulls attempting to uphold support at local lows. The digital asset traded around $61,700, a significant drop from its all-time high of nearly $65,000 reached last weekend. This volatility comes as global stocks prepared for Micron Technology Inc.'s forward earnings report and digested losses from the Asian session.\n\nThe fluctuation in Bitcoin's price is crucial because it reflects investor sentiment and risk appetite. As a highly speculative asset, Bitcoin's movements can be influenced by various factors, including traditional market trends, regulatory decisions, and macroeconomic events. In this case, the upcoming Micron earnings report could potentially cause further volatility due to its impact on tech stocks, which often have a correlation with Bitcoin.\n\nThe Asian session losses might also contribute to Bitcoin's turbulence. The region's markets are significant players in the global financial landscape, and their performance can influence the direction of Bitcoin and other risk assets. Given these factors, investors should be prepared for potential price swings in Bitcoin as the week progresses.\n\nKEY_TAKEAWAY: Bitcoin remains volatile due to upcoming Micron earnings and Asian market performance, with bulls attempting to preserve support at local lows around $61,700.",
+      "original": {
+        "title": "Bitcoin teases $62K breakdown as analysis sees Micron earnings volatility next",
+        "summary": "Bitcoin stayed volatile while bulls tried to preserve support at local lows while stocks prepared for Micron forward earnings and digested Asia losses.",
+        "link": "https://cointelegraph.com/markets/bitcoin-teases-62k-breakdown-as-analysis-sees-micron-earnings-volatility-next?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+        "source": "Cointelegraph.com News",
+        "date": "Tue, 23 Jun 2026 15:15:41 GMT"
+      }
+    },
+    {
+      "written": "ARTICLE_TITLE: Bitcoin slump worsens amid SpaceX rout: Can BTC price hold $60K any longer?\n\nARTICLE_BODY:\n\n1. The ongoing selloff in tech stocks has intensified, with SpaceX experiencing a massive $600 billion drop in market value, sending shockwaves through the cryptocurrency market. This steep decline has put a strain on Bitcoin's support at $60,000, making it more vulnerable to further downward pressure.\n\n2. The connection between traditional tech stocks and cryptocurrencies is noteworthy, as both are often correlated due to their shared reliance on investor sentiment, risk appetite, and the broader economic climate. The SpaceX rout could be a sign of broader market anxiety, which may have ripple effects on Bitcoin's price movement.\n\n3. Investors should brace themselves for potential volatility in the short term, as the uncertainty surrounding both tech stocks and cryptocurrencies persists. A deeper selloff in Bitcoin could push prices below the $60,000 mark if there are no significant bullish factors to counteract the bearish momentum.\n\nKEY_TAKEAWAY:\nThe SpaceX rout and its impact on tech markets may pose a threat to Bitcoin's $60,000 support, potentially setting off a deeper selloff in the cryptocurrency.",
+      "original": {
+        "title": "Bitcoin slump worsens amid SpaceX rout: Can BTC price hold $60K any longer?",
+        "summary": "SpaceX’s $600 billion wipeout rattles tech markets, putting Bitcoin’s $60,000 support at risk as traders brace for a deeper BTC selloff.",
+        "link": "https://cointelegraph.com/markets/bitcoin-slump-worsens-amid-spacex-rout-can-btc-price-hold-60k-any-longer?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+        "source": "Cointelegraph.com News",
+        "date": "Tue, 23 Jun 2026 14:38:32 GMT"
+      }
+    },
+    {
+      "written": "ARTICLE_TITLE: Bitcoin gets new $54K warning as BTC price hits 11-day low on Asia tech sell-off\n\nARTICLE_BODY:\n\nParagraph 1: The cryptocurrency market experienced a significant downturn on Monday, with Bitcoin's price dipping below $62,000 for the first time in nearly two weeks. This drop followed a broad sell-off in Asia's technology stocks, which saw losses as high as 10%. Analysts attribute this decline to growing concerns about tightening monetary policies and rising bond yields in the United States.\n\nParagraph 2: For Bitcoin investors, this price drop is a cause for concern as it represents a break from the bullish trend that has seen BTC prices reach all-time highs. The dip below $62,000 marks a new 11-day low for the cryptocurrency, signaling potential volatility in the near future.\n\nParagraph 3: Despite the recent price drop, some analysts remain optimistic about Bitcoin's long-term prospects. They argue that the current sell-off is part of a larger correction and that the overall trend remains bullish due to increasing institutional adoption and growing interest from mainstream investors. However, they also warn that new lows could be on the horizon, urging investors to exercise caution.\n\nKEY_TAKEAWAY: Bitcoin's price dropped below $62,000 for the first time in nearly two weeks, following a broader sell-off in Asia's technology stocks. Analysts warn of potential new lows, urging investors to exercise caution despite overall bullish trends due to increasing institutional adoption and growing interest from mainstream investors.",
+      "original": {
+        "title": "Bitcoin gets new $54K warning as BTC price hits 11-day low on Asia tech sell-off",
+        "summary": "Bitcoin analysis warned of \"new lows\" as Asia markets dropped as much as 10% and BTC price action dipped below $62,000 for the first time in nearly two weeks.",
+        "link": "https://cointelegraph.com/markets/bitcoin-gets-new-54k-warning-as-btc-price-hits-11-day-low-on-asia-tech-sell-off?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+        "source": "Cointelegraph.com News",
+        "date": "Tue, 23 Jun 2026 10:23:19 GMT"
+      }
+    },
+    {
+      "written": "ARTICLE_TITLE: Bitcoin funding rate hits 2-week high: Is $70K next?\n\nARTICLE_BODY:\n\n1. The funding rate for Bitcoin, a fee that traders pay to each other when they hold long or short positions in perpetual swap contracts, has reached its highest level in two weeks. This indicates growing optimism among investors as the rate represents a premium or discount paid daily by long and short positions respectively to ensure parity between spot and derivatives markets.\n\n2. The surge in the funding rate is significant for Bitcoin because it mirrors increased investor appetite for BTC. A positive funding rate, as observed currently, typically occurs during bullish market phases when long positions are favored over short ones, reflecting a general belief that the price of Bitcoin will rise.\n\n3. However, despite the upward momentum in the funding rate and the optimistic setup on orderbooks, several factors suggest that Bitcoin's short-term upside may be limited. For instance, outflows from Bitcoin Exchange-Traded Funds (ETF) indicate profit-taking among institutional investors, which could put pressure on Bitcoin prices. Moreover, ongoing macroeconomic concerns such as geopolitical tensions and rising inflation rates add to the uncertainty surrounding Bitcoin's short-term growth trajectory.\n\nKEY_TAKEAWAY: While investor optimism is reflected in the 2-week high funding rate for Bitcoin, macroeconomic factors and outflows from ETFs could limit its short-term upside, suggesting caution for investors considering new investments in the cryptocurrency.",
+      "original": {
+        "title": "Bitcoin funding rate hits 2-week high: Is $70K next?",
+        "summary": "Bitcoin’s funding rate and orderbook setup signal investor optimism, but ETF outflows and macro red flags could limit BTC’s short-term upside.",
+        "link": "https://cointelegraph.com/markets/bitcoin-funding-rate-hits-2-week-high-is-70k-next?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+        "source": "Cointelegraph.com News",
+        "date": "Mon, 22 Jun 2026 22:15:51 GMT"
+      }
+    }
+  ]
+}
